@@ -26,7 +26,7 @@ class PersonDetailView(DetailView):
         return models.Topic.objects.filter(statements__person=self.object).distinct()
 
     def get_statements(self):
-        return self.object.statements.all()
+        return self.object.statements.reviewed()
 
 
 class PersonTopicDetailView(PersonDetailView):

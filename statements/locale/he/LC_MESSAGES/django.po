@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 15:42+0200\n"
-"PO-Revision-Date: 2023-03-17 15:42+0200\n"
+"POT-Creation-Date: 2023-03-17 20:22+0200\n"
+"PO-Revision-Date: 2023-03-17 20:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he\n"
@@ -19,83 +19,103 @@ msgstr ""
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: statements/admin.py:26 statements/models.py:26 statements/models.py:34
+#: statements/admin.py:26 statements/models.py:39 statements/models.py:57
 msgid "topics"
 msgstr "נושאים"
 
-#: statements/models.py:6
+#: statements/models.py:7
 msgid "name"
 msgstr "שם"
 
-#: statements/models.py:7
+#: statements/models.py:8
 msgid "affiliation"
 msgstr "שיוך"
 
-#: statements/models.py:13 statements/models.py:31
-msgid "person"
-msgstr "אישיות"
-
-#: statements/models.py:14
-msgid "people"
-msgstr "אישים"
-
-#: statements/models.py:18
+#: statements/models.py:9 statements/models.py:31
 msgid "title"
 msgstr "כותרת"
 
-#: statements/models.py:19
+#: statements/models.py:10
+msgid "image url"
+msgstr "תמונה"
+
+#: statements/models.py:19 statements/models.py:54
+msgid "person"
+msgstr "אישיות"
+
+#: statements/models.py:20
+msgid "people"
+msgstr "אישים"
+
+#: statements/models.py:32
 msgid "description"
 msgstr "תיאור"
 
-#: statements/models.py:25
+#: statements/models.py:38
 msgid "topic"
 msgstr "נושא"
 
-#: statements/models.py:36
-msgid "date"
-msgstr "תאריך"
-
-#: statements/models.py:37
-msgid "content"
-msgstr "תוכן"
-
-#: statements/models.py:40
-msgid "statement"
-msgstr "אמירה"
-
-#: statements/models.py:41
-msgid "statements"
-msgstr "אמירות"
-
-#: statements/models.py:47
+#: statements/models.py:49
 msgid "True"
 msgstr "אמת"
 
-#: statements/models.py:48
+#: statements/models.py:50
 msgid "Half True"
 msgstr "ככה ככה"
 
-#: statements/models.py:49
+#: statements/models.py:51
 msgid "False"
 msgstr "שקר"
 
-#: statements/models.py:52
+#: statements/models.py:59
+msgid "date"
+msgstr "תאריך"
+
+#: statements/models.py:60
+msgid "content"
+msgstr "תוכן"
+
+#: statements/models.py:63
 msgid "rating"
 msgstr "דירוג"
 
-#: statements/models.py:54
+#: statements/models.py:65
 msgid "review"
 msgstr "ביקורת"
 
-#: statements/templates/base.html:13 statements/templates/base.html:21
+#: statements/models.py:67
+msgid "reviewed_by"
+msgstr "נסקר על ידי"
+
+#: statements/models.py:73
+msgid "statement"
+msgstr "אמירה"
+
+#: statements/models.py:74
+msgid "statements"
+msgstr "אמירות"
+
+#: statements/templates/base.html:15 statements/templates/base.html:23
 msgid "True Politics"
 msgstr "טרו פוליטיקס"
 
-#: statements/templates/base.html:27 statements/templates/base.html:28
-#: statements/templates/base.html:31
+#: statements/templates/base.html:29 statements/templates/base.html:30
+#: statements/templates/base.html:33
 msgid "Search"
 msgstr "חיפוש"
 
-#: statements/views.py:8
+#: statements/templates/statements/person_detail.html:59
+msgid "Review"
+msgstr "הפרכה"
+
+#: statements/templates/statements/person_detail.html:62
+msgid "published at"
+msgstr "פורסם ב:"
+
+#: statements/templates/statements/person_detail.html:64
+msgid "by"
+msgstr "על ידי"
+
+#: statements/views.py:10
 msgid "Home Page"
 msgstr "דף הבית"

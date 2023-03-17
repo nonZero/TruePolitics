@@ -39,7 +39,17 @@ class Topic(models.Model):
         verbose_name_plural = _("topics")
 
 
+class StatementQuerySet(models.QuerySet):
+    def reviewed(self):
+        return self.filter(review__isnull=False)
+
+
 class Statement(models.Model):
+    class Rating(models.IntegerChoices):
+        GREEN = 1, _("True")
+        ORANGE = 2, _("Half True")
+        RED = 3, _("False")
+
     person = models.ForeignKey(
         Person, models.PROTECT, related_name="statements", verbose_name=_("person")
     )
@@ -49,22 +59,22 @@ class Statement(models.Model):
     date = models.DateField(_("date"))
     content = models.TextField(_("content"))
 
+    rating = models.IntegerField(
+        choices=Rating.choices, null=True, verbose_name=_("rating")
+    )
+    review = models.TextField(blank=True, null=True, verbose_name=_("review"))
+    reviewed_by = models.CharField(
+        _("reviewed_by"), max_length=200, blank=True, null=True
+    )
+
+    objects = StatementQuerySet.as_manager()
+
     class Meta:
         verbose_name = _("statement")
         verbose_name_plural = _("statements")
 
     def __str__(self):
         return f'"{self.content}" by {self.person}'
-
-    class Rating(models.IntegerChoices):
-        GREEN = 1, _("True")
-        ORANGE = 2, _("Half True")
-        RED = 3, _("False")
-
-    rating = models.IntegerField(
-        choices=Rating.choices, null=True, verbose_name=_("rating")
-    )
-    review = models.TextField(blank=True, null=True, verbose_name=_("review"))
 
 
 class Resource(models.Model):

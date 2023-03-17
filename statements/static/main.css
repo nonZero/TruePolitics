@@ -1,11 +1,12 @@
-.sidebar-sidebar{
+.sidebar-sidebar {
     display: flex;
     flex-direction: column;
     align-items: center;
 
 
 }
-.sidebar-topics{
+
+.sidebar-topics {
     margin-block: 1rem;
     display: flex;
     gap: 2rem;
@@ -13,12 +14,13 @@
 }
 
 
-.sidebar-topics h2{
+.sidebar-topics h2 {
     display: flex;
     align-items: center;
 
 }
-.sidebar-topics .button{
+
+.sidebar-topics .button {
     background: transparent;
     border-radius: 5px;
     border: 1px solid black;
@@ -26,39 +28,41 @@
     color: black;
     text-decoration: none;
 }
-.button.active{
+
+.button.active {
     background: lightgray;
     font-weight: bold;
 }
-.sidebar-topics h2 input{
+
+.sidebar-topics h2 input {
     /*width: 50%;*/
     border-radius: 5px;
     border: 1px solid black;
     margin: auto;
 }
 
-.sidebar-topics .sidebar-buttons{
+.sidebar-topics .sidebar-buttons {
     display: flex;
-    gap:    1rem;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
-.sidebar-affiliation-img img{
+.sidebar-affiliation-img img {
     max-height: 50px;
 }
 
-.sidebar-img{
+.sidebar-img {
     width: 150px;
     height: 150px;
     overflow: hidden;
     border-radius: 50%;
 }
-.sidebar-img img{
-    height:150%
+
+.sidebar-img img {
+    height: 150%
 }
 
-
-.card-title a{
+.card-title a {
     text-decoration: none;
     color: black;
 }

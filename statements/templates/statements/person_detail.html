@@ -1,63 +1,82 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
 
 
-<div class="row">
+    <div class="row">
 
 
-
-    <div class="col-s-6 col-lg-4 sidebar-sidebar">
-        <h1 class="sidebar-title">
-            {{ object }}
-        </h1>
-        <div class="sidebar-img">
-            <img src="{{ object.img_url }}" alt="{{ object }}">
-        </div>
-        <i>{{ object.affiliation }}</i>
-        <div class="sidebar-person-title">
-            <strong>
-                {% if object.title != null %}
-                    {{ object.title }}
-                {% endif %}
-            </strong>
-        </div>
-        <div class="sidebar-topics">
-            <h2>
-                <input type="text" name="topics" placeholder="חיפוש נושא">
-            </h2>
-            <div class="sidebar-buttons">
-                 <a class="button {% if view.topic == null %} active {% endif %}" href="{% url 's:person' object.pk %}">
-                   הכל
-                </a>
-                {% for t in view.get_topics %}
-                        <a class="button {% if t == view.topic %} active {% endif %}" href="{% url "s:person_topic" object.pk t.pk %}">
+        <div class="col-s-6 col-lg-4 sidebar-sidebar">
+            <h1 class="sidebar-title">
+                {{ object }}
+            </h1>
+            <div class="sidebar-img">
+                <img src="{{ object.img_url }}"
+                     alt="{{ object }}">
+            </div>
+            <i>{{ object.affiliation }}</i>
+            <div class="sidebar-person-title">
+                <strong>
+                    {% if object.title != null %}
+                        {{ object.title }}
+                    {% endif %}
+                </strong>
+            </div>
+            <div class="sidebar-topics">
+                <h2>
+                    <input type="text"
+                           name="topics"
+                           placeholder="חיפוש נושא">
+                </h2>
+                <div class="sidebar-buttons">
+                    <a class="button {% if view.topic == null %} active {% endif %}"
+                       href="{% url 's:person' object.pk %}">
+                        הכל
+                    </a>
+                    {% for t in view.get_topics %}
+                        <a class="button {% if t == view.topic %} active {% endif %}"
+                           href="{% url "s:person_topic" object.pk t.pk %}">
                             {{ t.title }}
                         </a>
-                {% endfor %}
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="sidebar-rating">
 
             </div>
         </div>
-        <div class="sidebar-rating">
-            
-        </div>
-    </div>
         <div class="col-s-6 col-lg-8 sidebar-sidebar">
-                 <div class="">
-                    {% for object in object.statements.all %}
-                        <div class="card mb-2">
+            <div class="">
+                {% for object in view.get_statements %}
+                    <div class="card mb-2">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a  href="{% url 's:detail' object.pk %}">
-                                    {{ object.content|linebreaksbr }}
+                                <a href="{% url 's:detail' object.pk %}">
+                                    "{{ object.content|linebreaksbr }}"
                                 </a>
                             </h5>
-                            {{ object.topic }}
+                            <b>{% trans "Review" %}:</b>
                             {{ object.review }}
-                            פורסם ב{{ object.date }}
+                            <hr>
+                            {% trans "published at" %}
+                            {{ object.date }}
+                            {% trans "by" %}
+                            {{ object.reviewed_by }}
+                            |
+                            {% for t in object.topics.all %}
+                                <a href="{% url "s:topic" t.id %}">
+                                <span class="">
+                                    {{ t }}
+                                </span>
+                                </a>
+                            {% endfor %}
+
+
                         </div>
-                        </div>
-                    {% endfor %}
-                </div>
+                    </div>
+                {% endfor %}
             </div>
+        </div>
     </div>
 {% endblock %}
