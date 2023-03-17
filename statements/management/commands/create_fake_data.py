@@ -1,3 +1,4 @@
+import json
 import random
 
 import tqdm
@@ -30,18 +31,15 @@ class Command(BaseCommand):
         Topic.objects.all().delete()
         Person.objects.all().delete()
 
-        mks = (
-            (settings.BASE_DIR / "statements" / "data" / "mks.txt")
-            .read_text()
-            .splitlines()
-        )
+        mks = json.load((settings.BASE_DIR / "statements" / "data" / "mks.json").open())
 
         faker = Faker("he")
-        for mk in mks:
-            Person.objects.get_or_create(
-                name=mk,
+        for mk in tqdm.tqdm(mks):
+            Person.objects.update_or_create(
+                name=mk["name"],
                 defaults=dict(
-                    affiliation="מפלגת שקר כלשהו",
+                    affiliation=mk["party"],
+                    img_url=mk["img_url"],
                 ),
             )
 

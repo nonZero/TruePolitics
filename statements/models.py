@@ -19,6 +19,13 @@ class Person(models.Model):
         verbose_name = _("person")
         verbose_name_plural = _("people")
 
+    def rating(self):
+        return (
+            self.statements.filter(rating__isnull=False)
+            .aggregate(r=models.Avg("rating"))
+            .get("r")
+        )
+
 
 class Topic(models.Model):
     title = models.CharField(_("title"), max_length=250, unique=True)
