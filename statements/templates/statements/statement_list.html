@@ -1,24 +1,34 @@
 {% extends "base.html" %}
+{% load web i18n %}
 {% block content %}
     <div class="row">
         <div class="col-lg-6">
+            <h2>
+                {% trans "Latest Lies" %}
+            </h2>
             {% include "statements/_statements.html" with statements=object_list with_author=1 %}
         </div>
         <div class="col-lg-3">
+            <h2>
+                {% trans "People" %}
+            </h2>
             <ul class="list-group">
                 {% for p in view.people %}
                     <li class="list-group-item">
-                        {{ p }} ({{ p.items }})
+                        {{ p|u }} ({{ p.items }})
                     </li>
                 {% endfor %}
             </ul>
         </div>
 
         <div class="col-lg-3">
+            <h2>
+                {% trans "Topics" %}
+            </h2>
             <ul class="list-group">
                 {% for t in view.topics %}
                     <li class="list-group-item">
-                        {{ t }} ({{ t.items }})
+                        {{ t|u }} ({{ t.items }})
                     </li>
                 {% endfor %}
             </ul>
@@ -27,3 +37,4 @@
     </div>
 
 {% endblock %}
+
