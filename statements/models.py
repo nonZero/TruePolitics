@@ -73,7 +73,10 @@ class Resource(models.Model):
     url = models.URLField(unique=True)
     content = models.TextField()
     timestamp = models.DateTimeField()
+
     # full_content = models.JSONField()
+    def __str__(self):
+        return self.content
 
 
 class ResourceStatement(models.Model):

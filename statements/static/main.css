@@ -56,3 +56,9 @@
 .sidebar-img img{
     height:150%
 }
+
+
+.card-title a{
+    text-decoration: none;
+    color: black;
+}
