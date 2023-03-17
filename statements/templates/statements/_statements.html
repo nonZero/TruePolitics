@@ -1,33 +1,5 @@
 {% load i18n %}
 
 {% for o in statements %}
-    <div class="card mb-2">
-        <div class="card-body">
-            <h5 class="card-title">
-                {% if with_author %}
-                    <a href="{{ o.person.get_absolute_url }}">{{ o.person }}</a>:
-                {% endif %}
-                <a href="{% url 's:detail' o.pk %}">
-                    "{{ o.content|linebreaksbr }}"
-                </a>
-            </h5>
-            <b>{% trans "Review" %}:</b>
-            {{ o.review }}
-            <hr>
-            {% trans "published at" %}
-            {{ o.date }}
-            {% trans "by" %}
-            {{ o.reviewed_by }}
-            |
-            {% for t in o.topics.all %}
-                <a href="{% url "s:topic" t.id %}">
-                                <span class="">
-                                    {{ t }}
-                                </span>
-                </a>
-            {% endfor %}
-
-
-        </div>
-    </div>
+    {% include "statements/_statement.html" %}
 {% endfor %}

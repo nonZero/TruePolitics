@@ -1,10 +1,6 @@
-<blockquote>
-    <large>{{ object.content|linebreaksbr }}</large>
-    -- <i>
-    <a href="{% url 's:person' object.person.pk %}">
-                {{ object.person }}
-    </a>
-</i>, {{ object.date }}
-</blockquote>
-
+{% extends "base.html" %}
+{% load web i18n %}
+{% block content %}
+    {% include "statements/_statement.html" with o=object with_author=1 %}
+{% endblock %}
 
