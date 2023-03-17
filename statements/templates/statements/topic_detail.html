@@ -12,8 +12,8 @@
         <div class="sidebar-topics w-100">
             <div class="sidebar-buttons w-100">
                 <div x-data="{ search: '' }" class="w-100">
-                    <div    class="w-100"
-                            x-data="{
+                    <div class="w-100"
+                         x-data="{
                             search: '',
 
                             items: people,
@@ -26,10 +26,10 @@
                         }"
                     >
 
-                            <input x-model="search"
-                                   placeholder="חיפוש פוליטיקאי"
-                                   class="form-control mb-4"
-                            >
+                        <input x-model="search"
+                               placeholder="חיפוש פוליטיקאי"
+                               class="form-control mb-4"
+                        >
 
                         <ul class="sidebar-buttons">
                             <template x-for="item in filteredItems"
