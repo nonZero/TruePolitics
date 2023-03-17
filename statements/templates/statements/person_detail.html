@@ -10,3 +10,35 @@
         </li>
     {% endfor %}
 </ul>
+
+<div class="">
+    <div class="sidebar">
+    <h1 class="title">
+        {{ object }}
+    </h1>
+    <div class="img">
+        <img src="" alt="">
+    </div>
+    <div class="affiliation-img">
+        <img src="" alt="">
+    </div>
+    <div class="topics">
+        <h2>
+            נושאים
+        </h2>
+        <div>
+            {% for t in view.get_topics %}
+                <button>
+                    {{ t.title }}
+                </button>
+            {% endfor %}
+
+        </div>
+    </div>
+    </div>
+
+
+    <div class="main">
+
+    </div>
+</div>
