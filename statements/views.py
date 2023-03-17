@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 
-# Create your views here.
+from . import models
+
+
+class StatementListView(ListView):
+    model = models.Statement
+
+
+class StatementDetailView(DetailView):
+    model = models.Statement
