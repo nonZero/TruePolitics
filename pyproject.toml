@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "truepolitics"
+version = "0.1.0"
+description = ""
+authors = ["Udi Oron <udioron@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.10"
+Django = "^4.1.7"
+django-extensions = "^3.2.1"
+jupyter = "^1.0.0"
+ipython = "*"
+pytest = "^7.2.2"
+faker = "^17.6.0"
+tqdm = "^4.65.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
