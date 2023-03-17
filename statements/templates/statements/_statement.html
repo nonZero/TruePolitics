@@ -2,9 +2,10 @@
 <div class="card mb-2">
     <div class="card-body">
         {% if with_author %}
-            <div class="float-start px-2">
-                <img src="{{ o.person.img_url }}"
-                     alt="{{ o.person }}">
+            <div class="float-start mx-2 rounded-circle statement-person-img"  style="background-image: url({{ o.person.img_url }})">
+{#                <img src="{{ o.person.img_url }}"#}
+{#                     alt="{{ o.person }}"#}
+{#                    class="">#}
             </div>
         {% endif %}
         <h5 class="card-title">
