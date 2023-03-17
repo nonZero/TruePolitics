@@ -13,4 +13,10 @@ urlpatterns = [
         views.PersonTopicDetailView.as_view(),
         name="person_topic",
     ),
+    path("t/<int:pk>/", views.TopicDetailView.as_view(), name="topic"),
+    path(
+        "t/<int:pk>/<int:person_pk>/",
+        views.TopicPersonDetailView.as_view(),
+        name="topic_person",
+    ),
 ]

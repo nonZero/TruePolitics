@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20vw;
 
 
 }
@@ -32,7 +31,7 @@
     font-weight: bold;
 }
 .sidebar-topics h2 input{
-    width: 50%;
+    /*width: 50%;*/
     border-radius: 5px;
     border: 1px solid black;
     margin: auto;
