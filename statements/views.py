@@ -17,12 +17,12 @@ class StatementListView(ListView):
     def people(self):
         return models.Person.objects.annotate(
             items=Count("statements__id", filter=Q(statements__review__isnull=False)),
-        )[:15]
+        )[:8]
 
     def topics(self):
         return models.Topic.objects.annotate(
             items=Count("statements__id", filter=Q(statements__review__isnull=False)),
-        )[:15]
+        )[:8]
 
 
 class StatementDetailView(DetailView):
@@ -42,6 +42,18 @@ class PersonDetailView(DetailView):
 
     def get_statements(self):
         return self.object.statements.reviewed()
+
+    def get_topics_names(self):
+        return [
+            {
+                "id": t.id,
+                "title": t.title,
+                "url": reverse(
+                    "s:person_topic", kwargs={"pk": self.object.pk, "topic_pk": t.pk}
+                ),
+            }
+            for t in self.get_topics()
+        ]
 
 
 class PersonTopicDetailView(PersonDetailView):

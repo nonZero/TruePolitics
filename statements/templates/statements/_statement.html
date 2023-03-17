@@ -2,30 +2,45 @@
 <div class="card mb-2">
     <div class="card-body">
         {% if with_author %}
-            <div class="float-start mx-2 rounded-circle statement-person-img"  style="background-image: url({{ o.person.img_url }})">
-{#                <img src="{{ o.person.img_url }}"#}
-{#                     alt="{{ o.person }}"#}
-{#                    class="">#}
+            <div class="float-start mx-2 rounded-circle statement-person-img"
+                 style="background-image: url({{ o.person.img_url }})">
+
             </div>
         {% endif %}
-        <h5 class="card-title">
+        <div class="card-title">
             {% if with_author %}
                 <a href="{{ o.person.get_absolute_url }}">{{ o.person }}</a>:
             {% endif %}
-            <a href="{% url 's:detail' o.pk %}">
+            <a class="fw-bold" href="{% url 's:detail' o.pk %}">
                 "{{ o.content|linebreaksbr }}"
             </a>
-        </h5>
-        <b>{% trans "Review" %}:</b>
-        {{ o.review }}
+        </div>
+        <div class="mb-3">
+            <span>{% trans "Review" %}:</span>
+            <strong>
+                {{ o.review }}
+            </strong>
+        </div>
+        {% for t in o.topics.all %}
+            <a class="badge rounded-pill text-decoration-none text-dark border-dark border"   href="{% url 's:topic' t.pk %}">
+                {{ t }}
+            </a>
+        {% endfor %}
         <hr>
         {% trans "published at" %}
         {{ o.date }}
         {% trans "by" %}
         {{ o.reviewed_by }}
         |
-        {% for t in o.topics.all %}
-            {{ t|u }}
-        {% endfor %}
+
+        {% if show_resources %}
+            <hr>
+            {% for r in o.resources.all %}
+                <a href="{{ r.url }}" target="_blank">
+                    {{ r }}
+                </a>
+                <br>
+            {% endfor %}
+        {% endif %}
     </div>
 </div>
