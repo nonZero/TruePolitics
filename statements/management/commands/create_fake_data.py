@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 from faker import Faker
 
-from statements.models import Person, Topic, Statement, Resource, ResourceStatement
+from statements.models import Person, Topic, Statement, Resource
 
 TOPICS = """
 מדיני
@@ -25,7 +25,6 @@ class Command(BaseCommand):
         parser.add_argument("n", type=int)
 
     def handle(self, n, *args, **options):
-        # ResourceStatement.objects.all().delete()
         # Resource.objects.all().delete()
         # Statement.objects.all().delete()
         # Topic.objects.all().delete()
@@ -62,13 +61,9 @@ class Command(BaseCommand):
             s.topics.set(
                 list(Topic.objects.order_by("?")[: random.randint(10, 22) // 10]),
             )
-            r = Resource.objects.create(
-                url=faker.url() + f"?x={random.randint(100000,999999)}",
+            r = s.resources.create(
+                type=Resource.ResourceType.OTHER,
+                url=faker.url() + f"?x={random.randint(100000, 999999)}",
                 content=faker.paragraph(),
                 timestamp=f"{d} {faker.time()}+0000",
-            )
-            ResourceStatement.objects.create(
-                resource=r,
-                statement=s,
-                priority=1,
             )

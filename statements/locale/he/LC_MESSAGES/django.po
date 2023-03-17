@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 21:12+0200\n"
-"PO-Revision-Date: 2023-03-17 21:12+0200\n"
+"POT-Creation-Date: 2023-03-17 22:19+0200\n"
+"PO-Revision-Date: 2023-03-17 22:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: statements/admin.py:26 statements/models.py:36 statements/models.py:60
+#: statements/admin.py:34 statements/models.py:36 statements/models.py:60
 msgid "topics"
 msgstr "נושאים"
 
@@ -75,25 +75,41 @@ msgstr "תאריך"
 msgid "content"
 msgstr "תוכן"
 
-#: statements/models.py:66
+#: statements/models.py:68
 msgid "rating"
 msgstr "דירוג"
 
-#: statements/models.py:68
+#: statements/models.py:71
 msgid "review"
 msgstr "ביקורת"
 
-#: statements/models.py:70
+#: statements/models.py:73
 msgid "reviewed_by"
 msgstr "נסקר על ידי"
 
-#: statements/models.py:76
+#: statements/models.py:79
 msgid "statement"
 msgstr "אמירה"
 
-#: statements/models.py:77
+#: statements/models.py:80
 msgid "statements"
 msgstr "אמירות"
+
+#: statements/models.py:88
+msgid "Other"
+msgstr "אחר"
+
+#: statements/models.py:89
+msgid "Tweet"
+msgstr "ציוץ"
+
+#: statements/models.py:90
+msgid "Haaretz"
+msgstr "הארץ"
+
+#: statements/models.py:91
+msgid "YNet"
+msgstr "Ynet"
 
 #: statements/templates/base.html:15 statements/templates/base.html:23
 msgid "True Politics"
@@ -104,15 +120,15 @@ msgstr "טרו פוליטיקס"
 msgid "Search"
 msgstr "חיפוש"
 
-#: statements/templates/statements/_statements.html:14
+#: statements/templates/statements/_statement.html:19
 msgid "Review"
 msgstr "הפרכה"
 
-#: statements/templates/statements/_statements.html:17
+#: statements/templates/statements/_statement.html:22
 msgid "published at"
 msgstr "פורסם ב:"
 
-#: statements/templates/statements/_statements.html:19
+#: statements/templates/statements/_statement.html:24
 msgid "by"
 msgstr "על ידי"
 

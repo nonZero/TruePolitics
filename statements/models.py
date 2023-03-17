@@ -63,7 +63,10 @@ class Statement(models.Model):
     content = models.TextField(_("content"))
 
     rating = models.IntegerField(
-        choices=Rating.choices, null=True, verbose_name=_("rating")
+        choices=Rating.choices,
+        null=True,
+        verbose_name=_("rating"),
+        blank=True,
     )
     review = models.TextField(blank=True, null=True, verbose_name=_("review"))
     reviewed_by = models.CharField(
@@ -81,19 +84,28 @@ class Statement(models.Model):
 
 
 class Resource(models.Model):
+    class ResourceType(models.IntegerChoices):
+        OTHER = 1, _("Other")
+        TWEET = 10, _("Tweet")
+        HAARETZ = 11, _("Haaretz")
+        YNET = 12, _("YNet")
+
     # uid = models.CharField(...)
     # type = twit, web arcitle, facebook post
-    url = models.URLField(unique=True)
-    content = models.TextField()
+    statement = models.ForeignKey(
+        Statement, models.PROTECT, blank=True, related_name="resources"
+    )
+    url = models.URLField()
     timestamp = models.DateTimeField()
+    type = models.IntegerField(choices=ResourceType.choices, default=ResourceType.TWEET)
+    content = models.TextField()
+    note = models.TextField(blank=True)
 
-    # full_content = models.JSONField()
+    class Meta:
+        unique_together = (
+            "statement",
+            "url",
+        )
+
     def __str__(self):
         return self.content
-
-
-class ResourceStatement(models.Model):
-    statement = models.ForeignKey(Statement, models.PROTECT, related_name="resources")
-    resource = models.ForeignKey(Resource, models.PROTECT, related_name="resources")
-    priority = models.IntegerField(default=10)
-    note = models.TextField(blank=True)
