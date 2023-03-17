@@ -1,12 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-    <ul class="list-group">
-        {% for object in object_list %}
-            <li class="list-group-item">
-                <a href="{% url 's:detail' object.pk %}">
-                    {{ object }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="row">
+        <div class="col-lg-6">
+            {% include "statements/_statements.html" with statements=object_list with_author=1 %}
+        </div>
+        <div class="col-lg-3">
+            <ul class="list-group">
+                {% for p in view.people %}
+                    <li class="list-group-item">
+                        {{ p }} ({{ p.items }})
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-lg-3">
+            <ul class="list-group">
+                {% for t in view.topics %}
+                    <li class="list-group-item">
+                        {{ t }} ({{ t.items }})
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
 {% endblock %}

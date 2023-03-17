@@ -2,25 +2,18 @@
 {% block content %}
 
     <div class="row">
-    <div class="main">
-    </div>
+
 
 
     <div class="col-s-6 col-lg-4 sidebar-sidebar">
         <h1 class="sidebar-title">
             {{ object }}
         </h1>
-        <div class="sidebar-img">
-            <img src="data:image/jpeg;base64,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" alt="">
-        </div>
         <div class="sidebar-topics">
-            <h2>
-                <input type="text" name="people" placeholder="חיפוש פוליטיקאי">
-            </h2>
             <div class="sidebar-buttons">
-                <div  x-data="{ search: '' }">
+                <div x-data="{ search: '' }">
                     <div
-                        x-data="{
+                            x-data="{
                             search: '',
 
                             items: people,
@@ -32,27 +25,36 @@
                             }
                         }"
                     >
-                    <input x-model="search" placeholder="Search...">
+                        <input x-model="search"
+                               placeholder="Search...">
 
-                    <ul class="sidebar-buttons">
-                        <template x-for="item in filteredItems" :key="item.name">
-                                <a class="button " x-bind:href="item.url" x-text="item.name">
+                        <ul class="sidebar-buttons">
+                            <template x-for="item in filteredItems"
+                                      :key="item.name">
+                                <a class="button "
+                                   x-bind:href="item.url"
+                                   x-text="item.name">
                                 </a>
 
-                        </template>
-                    </ul>
+                            </template>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="sidebar-rating">
+            <div class="sidebar-rating">
 
+            </div>
         </div>
     </div>
-</div>
 
-{{ view.get_people_names|json_script:"people" }}
+    <div class="col-s-6 col-lg-8">
+        {% include "statements/_statements.html" with statements=view.get_statements with_author=1 %}
+    </div>
+
+
+    {{ view.get_people_names|json_script:"people" }}
     <script>
-        const people = JSON.parse(document.getElementById('people').textContent);
-        console.log(people)
+      const people = JSON.parse(document.getElementById('people').textContent);
+      console.log(people);
     </script>
 {% endblock %}

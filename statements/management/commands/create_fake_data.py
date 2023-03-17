@@ -25,11 +25,11 @@ class Command(BaseCommand):
         parser.add_argument("n", type=int)
 
     def handle(self, n, *args, **options):
-        ResourceStatement.objects.all().delete()
-        Resource.objects.all().delete()
-        Statement.objects.all().delete()
-        Topic.objects.all().delete()
-        Person.objects.all().delete()
+        # ResourceStatement.objects.all().delete()
+        # Resource.objects.all().delete()
+        # Statement.objects.all().delete()
+        # Topic.objects.all().delete()
+        # Person.objects.all().delete()
 
         mks = json.load((settings.BASE_DIR / "statements" / "data" / "mks.json").open())
 

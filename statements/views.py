@@ -1,3 +1,4 @@
+from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
@@ -8,8 +9,20 @@ from . import models
 
 class StatementListView(ListView):
     title = _("Home Page")
-    model = models.Statement
     paginate_by = 20
+
+    def get_queryset(self):
+        return models.Statement.objects.reviewed()
+
+    def people(self):
+        return models.Person.objects.annotate(
+            items=Count("statements__id", filter=Q(statements__review__isnull=False)),
+        )[:15]
+
+    def topics(self):
+        return models.Topic.objects.annotate(
+            items=Count("statements__id", filter=Q(statements__review__isnull=False)),
+        )[:15]
 
 
 class StatementDetailView(DetailView):
@@ -23,7 +36,9 @@ class PersonDetailView(DetailView):
         return self.object.name
 
     def get_topics(self):
-        return models.Topic.objects.filter(statements__person=self.object).distinct()
+        return models.Topic.objects.filter(
+            statements__person=self.object, statements__review__isnull=False
+        ).distinct()
 
     def get_statements(self):
         return self.object.statements.reviewed()
@@ -46,10 +61,12 @@ class TopicDetailView(DetailView):
         return self.object
 
     def get_statements(self):
-        return models.Statement.objects.filter(topics=self.object)
+        return models.Statement.objects.reviewed().filter(topics=self.object)
 
     def get_people(self):
-        return models.Person.objects.filter(statements__topics=self.object).distinct()
+        return models.Person.objects.filter(
+            statements__topics=self.object, statements__review__isnull=False
+        ).distinct()
 
     def get_people_names(self):
         return [

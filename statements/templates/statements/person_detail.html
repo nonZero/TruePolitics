@@ -4,8 +4,6 @@
 
 
     <div class="row">
-
-
         <div class="col-s-6 col-lg-4 sidebar-sidebar">
             <h1 class="sidebar-title">
                 {{ object }}
@@ -23,11 +21,6 @@
                 </strong>
             </div>
             <div class="sidebar-topics">
-                <h2>
-                    <input type="text"
-                           name="topics"
-                           placeholder="חיפוש נושא">
-                </h2>
                 <div class="sidebar-buttons">
                     <a class="button {% if view.topic == null %} active {% endif %}"
                        href="{% url 's:person' object.pk %}">
@@ -46,37 +39,9 @@
 
             </div>
         </div>
-        <div class="col-s-6 col-lg-8 sidebar-sidebar">
-            <div class="">
-                {% for object in view.get_statements %}
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <a href="{% url 's:detail' object.pk %}">
-                                    "{{ object.content|linebreaksbr }}"
-                                </a>
-                            </h5>
-                            <b>{% trans "Review" %}:</b>
-                            {{ object.review }}
-                            <hr>
-                            {% trans "published at" %}
-                            {{ object.date }}
-                            {% trans "by" %}
-                            {{ object.reviewed_by }}
-                            |
-                            {% for t in object.topics.all %}
-                                <a href="{% url "s:topic" t.id %}">
-                                <span class="">
-                                    {{ t }}
-                                </span>
-                                </a>
-                            {% endfor %}
 
-
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+        <div class="col-s-6 col-lg-8">
+            {% include "statements/_statements.html" with statements=view.get_statements %}
         </div>
     </div>
 {% endblock %}
