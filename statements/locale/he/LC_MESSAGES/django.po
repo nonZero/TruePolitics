@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 20:22+0200\n"
-"PO-Revision-Date: 2023-03-17 20:23+0200\n"
+"POT-Creation-Date: 2023-03-17 21:12+0200\n"
+"PO-Revision-Date: 2023-03-17 21:12+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: statements/admin.py:26 statements/models.py:39 statements/models.py:57
+#: statements/admin.py:26 statements/models.py:36 statements/models.py:60
 msgid "topics"
 msgstr "נושאים"
 
@@ -39,7 +39,7 @@ msgstr "כותרת"
 msgid "image url"
 msgstr "תמונה"
 
-#: statements/models.py:19 statements/models.py:54
+#: statements/models.py:19 statements/models.py:57
 msgid "person"
 msgstr "אישיות"
 
@@ -51,47 +51,47 @@ msgstr "אישים"
 msgid "description"
 msgstr "תיאור"
 
-#: statements/models.py:38
+#: statements/models.py:35
 msgid "topic"
 msgstr "נושא"
 
-#: statements/models.py:49
+#: statements/models.py:52
 msgid "True"
 msgstr "אמת"
 
-#: statements/models.py:50
+#: statements/models.py:53
 msgid "Half True"
 msgstr "ככה ככה"
 
-#: statements/models.py:51
+#: statements/models.py:54
 msgid "False"
 msgstr "שקר"
 
-#: statements/models.py:59
+#: statements/models.py:62
 msgid "date"
 msgstr "תאריך"
 
-#: statements/models.py:60
+#: statements/models.py:63
 msgid "content"
 msgstr "תוכן"
 
-#: statements/models.py:63
+#: statements/models.py:66
 msgid "rating"
 msgstr "דירוג"
 
-#: statements/models.py:65
+#: statements/models.py:68
 msgid "review"
 msgstr "ביקורת"
 
-#: statements/models.py:67
+#: statements/models.py:70
 msgid "reviewed_by"
 msgstr "נסקר על ידי"
 
-#: statements/models.py:73
+#: statements/models.py:76
 msgid "statement"
 msgstr "אמירה"
 
-#: statements/models.py:74
+#: statements/models.py:77
 msgid "statements"
 msgstr "אמירות"
 
@@ -104,18 +104,34 @@ msgstr "טרו פוליטיקס"
 msgid "Search"
 msgstr "חיפוש"
 
-#: statements/templates/statements/person_detail.html:59
+#: statements/templates/statements/_statements.html:14
 msgid "Review"
 msgstr "הפרכה"
 
-#: statements/templates/statements/person_detail.html:62
+#: statements/templates/statements/_statements.html:17
 msgid "published at"
 msgstr "פורסם ב:"
 
-#: statements/templates/statements/person_detail.html:64
+#: statements/templates/statements/_statements.html:19
 msgid "by"
 msgstr "על ידי"
 
-#: statements/views.py:10
+#: statements/templates/statements/statement_list.html:7
+msgid "Latest Lies"
+msgstr "שקרים אחרונים"
+
+#: statements/templates/statements/statement_list.html:13
+msgid "People"
+msgstr "שקרנים"
+
+#: statements/templates/statements/statement_list.html:26
+msgid "Topics"
+msgstr "נושאים"
+
+#: statements/templatetags/web.py:51
+msgid ", "
+msgstr ""
+
+#: statements/views.py:11
 msgid "Home Page"
 msgstr "דף הבית"

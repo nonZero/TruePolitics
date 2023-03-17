@@ -31,12 +31,15 @@ class Topic(models.Model):
     title = models.CharField(_("title"), max_length=250, unique=True)
     description = models.TextField(_("description"), blank=True)
 
-    def __str__(self):
-        return self.title
-
     class Meta:
         verbose_name = _("topic")
         verbose_name_plural = _("topics")
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse("s:topic", kwargs={"pk": self.pk})
 
 
 class StatementQuerySet(models.QuerySet):
