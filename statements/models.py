@@ -5,6 +5,8 @@ from django.utils.translation import gettext_lazy as _
 class Person(models.Model):
     name = models.CharField(_("name"), max_length=250, unique=True)
     affiliation = models.CharField(_("affiliation"), max_length=500, blank=False)
+    title = models.CharField(_("title"), max_length=200, blank=True, null=True)
+    img_url = models.URLField(_("image url"), null=True)
 
     def __str__(self):
         return self.name
