@@ -16,5 +16,9 @@ class StatementDetailView(DetailView):
 
 class PersonDetailView(DetailView):
     model = models.Person
+
+    def title(self):
+        return self.object.name
+
     def get_topics(self):
         return models.Topic.objects.filter(statements__person=self.object).distinct()

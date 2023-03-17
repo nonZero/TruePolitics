@@ -9,7 +9,8 @@
 
     <link rel="stylesheet"
           href="{% static 'bootstrap/css/bootstrap.rtl.css' %}">
-
+    <link rel="stylesheet"
+          href="{% static 'main.css' %}">
     <title>{{ view.title }} / {% trans "True Politics" %}</title>
 </head>
 <body>
@@ -34,9 +35,7 @@
         </div>
     </nav>
 
-    <h1>
-        {{ view.title }}
-    </h1>
+
 
     <div class="content">
         {% block content %}{% endblock %}

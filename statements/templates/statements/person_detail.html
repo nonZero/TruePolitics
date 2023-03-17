@@ -1,32 +1,35 @@
-<h1> {{ object }}</h1>
-<ul>
+{% extends "base.html" %}
+{% block content %}
 
-    {% for o in object.statements.all %}
-
-        <li>
-            <a href="{% url 's:detail' o.pk %}">
-                {{ o }}
-            </a>
-        </li>
-    {% endfor %}
-</ul>
+{#<h1> {{ object }}</h1>#}
+{#<ul>#}
+{##}
+{#    {% for o in object.statements.all %}#}
+{##}
+{#        <li>#}
+{#            <a href="{% url 's:detail' o.pk %}">#}
+{#                {{ o }}#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endfor %}#}
+{#</ul>#}
 
 <div class="">
-    <div class="sidebar">
-    <h1 class="title">
+    <div class="sidebar-sidebar">
+    <h1 class="sidebar-title">
         {{ object }}
     </h1>
-    <div class="img">
+    <div class="sidebar-img">
         <img src="" alt="">
     </div>
-    <div class="affiliation-img">
+    <div class="sidebar-affiliation-img">
         <img src="" alt="">
     </div>
-    <div class="topics">
+    <div class="sidebar-topics">
         <h2>
             נושאים
         </h2>
-        <div>
+        <div class="sidebar-buttons">
             {% for t in view.get_topics %}
                 <button>
                     {{ t.title }}
@@ -42,3 +45,4 @@
 
     </div>
 </div>
+{% endblock %}
