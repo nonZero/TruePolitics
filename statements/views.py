@@ -5,6 +5,7 @@ from . import models
 
 class StatementListView(ListView):
     model = models.Statement
+    paginate_by = 20
 
 
 class StatementDetailView(DetailView):
