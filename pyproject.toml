@@ -17,6 +17,7 @@ tqdm = "^4.65.0"
 jupyterlab = "^3.6.1"
 pandas = "^1.5.3"
 lxml = "^4.9.2"
+django-bootstrap5 = "^22.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"

@@ -1,9 +1,11 @@
 from django.views.generic import ListView, DetailView
+from django.utils.translation import gettext_lazy as _
 
 from . import models
 
 
 class StatementListView(ListView):
+    title = _("Home Page")
     model = models.Statement
     paginate_by = 20
 

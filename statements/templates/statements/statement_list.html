@@ -1,9 +1,12 @@
-<ul>
-    {% for object in object_list %}
-        <li>
-            <a href="{% url 's:detail' object.pk %}">
-                {{ object }}
-            </a>
-        </li>
-    {% endfor %}
-</ul>
+{% extends "base.html" %}
+{% block content %}
+    <ul class="list-group">
+        {% for object in object_list %}
+            <li class="list-group-item">
+                <a href="{% url 's:detail' object.pk %}">
+                    {{ object }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

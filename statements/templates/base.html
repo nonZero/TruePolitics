@@ -1,0 +1,50 @@
+{% load static i18n %}
+<!doctype html>
+<html lang="ar"
+      dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+          href="{% static 'bootstrap/css/bootstrap.rtl.css' %}">
+
+    <title>{{ view.title }} / {% trans "True Politics" %}</title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                {% trans "True Politics" %}
+            </a>
+            <form class="d-flex"
+                  role="search">
+                <input class="form-control me-2"
+                       type="search"
+                       placeholder="{% trans "Search" %}"
+                       aria-label="{% trans "Search" %}">
+                <button class="btn btn-outline-success"
+                        type="submit">
+                    {% trans "Search" %}
+                </button>
+            </form>
+        </div>
+    </nav>
+
+    <h1>
+        {{ view.title }}
+    </h1>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</div>
+
+<script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+</body>
+</html>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 14:31+0200\n"
-"PO-Revision-Date: 2023-03-17 14:31+0200\n"
+"POT-Creation-Date: 2023-03-17 15:42+0200\n"
+"PO-Revision-Date: 2023-03-17 15:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he\n"
@@ -18,6 +18,10 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 "X-Generator: Poedit 3.2.2\n"
+
+#: statements/admin.py:26 statements/models.py:26 statements/models.py:34
+msgid "topics"
+msgstr "נושאים"
 
 #: statements/models.py:6
 msgid "name"
@@ -46,10 +50,6 @@ msgstr "תיאור"
 #: statements/models.py:25
 msgid "topic"
 msgstr "נושא"
-
-#: statements/models.py:26 statements/models.py:34
-msgid "topics"
-msgstr "נושאים"
 
 #: statements/models.py:36
 msgid "date"
@@ -86,3 +86,16 @@ msgstr "דירוג"
 #: statements/models.py:54
 msgid "review"
 msgstr "ביקורת"
+
+#: statements/templates/base.html:13 statements/templates/base.html:21
+msgid "True Politics"
+msgstr "טרו פוליטיקס"
+
+#: statements/templates/base.html:27 statements/templates/base.html:28
+#: statements/templates/base.html:31
+msgid "Search"
+msgstr "חיפוש"
+
+#: statements/views.py:8
+msgid "Home Page"
+msgstr "דף הבית"
