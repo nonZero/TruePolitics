@@ -25,14 +25,17 @@
                             }
                         }"
                     >
+
                         <input x-model="search"
-                               placeholder="Search...">
+                               placeholder="חיפוש פוליטיקאי"
+                                 class="form-control mb-4"
+                        >
 
                         <ul class="sidebar-buttons">
                             <template x-for="item in filteredItems"
                                       :key="item.name">
                                 <a class="button "
-                                   x-bind:href="item.url"
+                                   :href="item.url"
                                    x-text="item.name">
                                 </a>
 
@@ -54,7 +57,7 @@
 
     {{ view.get_people_names|json_script:"people" }}
     <script>
-      const people = JSON.parse(document.getElementById('people').textContent);
-      console.log(people);
+        const people = JSON.parse(document.getElementById('people').textContent);
+        console.log(people);
     </script>
 {% endblock %}
