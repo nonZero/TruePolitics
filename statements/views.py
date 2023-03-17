@@ -9,3 +9,7 @@ class StatementListView(ListView):
 
 class StatementDetailView(DetailView):
     model = models.Statement
+
+
+class PersonDetailView(DetailView):
+    model = models.Person

@@ -1,6 +1,10 @@
 <blockquote>
     <large>{{ object.content|linebreaksbr }}</large>
-    -- <i>{{ object.person }}</i>, {{ object.date }}
+    -- <i>
+    <a href="{% url 's:person' object.person.pk %}">
+                {{ object.person }}
+    </a>
+</i>, {{ object.date }}
 </blockquote>
 
 

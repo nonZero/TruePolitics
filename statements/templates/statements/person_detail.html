@@ -1,0 +1,12 @@
+<h1> {{ object }}</h1>
+<ul>
+
+    {% for o in object.statements.all %}
+
+        <li>
+            <a href="{% url 's:detail' o.pk %}">
+                {{ o }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
