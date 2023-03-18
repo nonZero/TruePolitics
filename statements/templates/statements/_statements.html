@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="my-4">
     {% for o in statements %}
-        {% include "statements/_statement.html" %}
+        {% include "statements/_statement.html" with home_page=home_page %}
     {% endfor %}
 </div>

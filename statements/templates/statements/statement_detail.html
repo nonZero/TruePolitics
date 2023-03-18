@@ -2,10 +2,14 @@
 {% load web i18n %}
 {% block content %}
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-9">
             <div class="row">
                 {% include "statements/_statement.html" with o=object with_author=1 show_resources=1 %}
             </div>
+            {% for s in view.get_statements %}
+                {% include "statements/_statement.html" with o=s with_author=1  %}
+            {% endfor %}
+
         </div>
     </div>
 {% endblock %}

@@ -15,6 +15,9 @@ class Person(models.Model):
     def get_absolute_url(self):
         return reverse("s:person", kwargs={"pk": self.pk})
 
+    def get_topic_statements_count(self, topic):
+        return self.statements.filter(topic=topic, review__isnull=False).count()
+
     class Meta:
         verbose_name = _("person")
         verbose_name_plural = _("people")

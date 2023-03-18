@@ -4,7 +4,8 @@
 
     <div class="row">
         <div class="col-md-6 col-lg-4 col-xl-2 sidebar ">
-            <a class="text-decoration-none text-dark d-flex flex-column align-items-center" href="{% url "s:person" object.pk %}">
+            <a class="text-decoration-none text-dark d-flex flex-column align-items-center"
+               href="{% url "s:person" object.pk %}">
                 <h1 class="sidebar-title text-center">
                     {{ object }}
                 </h1>
@@ -37,17 +38,19 @@
                         return this.search === '' || el.textContent.includes(this.search)
                       }
                     }">
-              <input class="form-control" type="search" placeholder="חיפוש נושא" x-model="search">
+                <input class="form-control" type="search" placeholder="חיפוש נושא" x-model="search">
 
                 {% for t in view.get_topics %}
-                    <a class="btn btn-sidebar btn-block mb-1 {% if view.topic.pk  == t.pk %} btn-active {% endif %}"
+                    <a class="btn btn-sidebar btn-block mb-1 btn-progress {% if view.topic.pk  == t.pk %} btn-active {% endif %}"
+                       style="--progress: 50%"
                        href="{% url "s:person_topic" object.pk t.pk %}"
                        x-show="show_item($el)"
                     >
-                        <span>
+                        <span class="float-start">
                             {{ t.title }}
                         </span>
-                        <span class="float-end">20</span>
+
+                        <span class="float-end">20%</span>
                     </a>
                 {% endfor %}
 

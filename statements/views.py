@@ -24,9 +24,15 @@ class StatementListView(ListView):
             items=Count("statements__id", filter=Q(statements__review__isnull=False)),
         )[:8]
 
+    def get_statements(self):
+        return models.Statement.objects.reviewed()[:5]
+
 
 class StatementDetailView(DetailView):
     model = models.Statement
+
+    def get_statements(self):
+        return models.Statement.objects.reviewed()
 
 
 class PersonDetailView(DetailView):
@@ -36,8 +42,13 @@ class PersonDetailView(DetailView):
         return self.object.name
 
     def get_topics(self):
-        return models.Topic.objects.filter(
-            statements__person=self.object, statements__review__isnull=False
+        return models.Topic.objects.annotate(
+            items=Count(
+                "statements__id",
+                filter=Q(
+                    statements__review__isnull=False, statements__person=self.object
+                ),
+            ),
         ).distinct()
 
     def get_statements(self):
