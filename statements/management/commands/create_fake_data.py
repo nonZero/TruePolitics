@@ -57,6 +57,7 @@ class Command(BaseCommand):
                 if rating
                 else None,
                 date=d,
+                review_date=d,
             )
             s.topics.set(
                 list(Topic.objects.order_by("?")[: random.randint(10, 22) // 10]),
