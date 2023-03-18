@@ -42,15 +42,16 @@
 
                 {% for t in view.get_topics %}
                     <a class="btn btn-sidebar btn-block mb-1 btn-progress {% if view.topic.pk  == t.pk %} btn-active {% endif %}"
-                       style="--progress: 50%"
+                       style="--progress: {{ t.percent }}%"
                        href="{% url "s:person_topic" object.pk t.pk %}"
+                       title="{{ t.items }} {% trans "items" %}"
                        x-show="show_item($el)"
                     >
                         <span class="float-start">
                             {{ t.title }}
                         </span>
 
-                        <span class="float-end">20%</span>
+                        <span class="float-end">{{ t.percent }}%</span>
                     </a>
                 {% endfor %}
 

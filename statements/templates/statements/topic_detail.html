@@ -6,6 +6,7 @@
         <h1 class="sidebar-title">
             {{ object }}
         </h1>
+    <p>{{ view.get_statements.count }}</p>
 
             <div class="sidebar-buttons w-100"
                  x-data="{
@@ -29,7 +30,7 @@
                         <span>
                             {{ p.name }}
                         </span>
-                        <span class="float-end">20</span>
+                        <span class="float-end">{{ p.items }} ({{ p.percent }}%)</span>
                     </a>
                 {% endfor %}
 

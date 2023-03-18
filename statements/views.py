@@ -1,4 +1,4 @@
-from django.db.models import Count, Q
+from django.db.models import Count, Q, F
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
@@ -42,32 +42,25 @@ class PersonDetailView(DetailView):
         return self.object.name
 
     def get_topics(self):
-        return models.Topic.objects.annotate(
-            items=Count(
-                "statements__id",
-                filter=Q(
-                    statements__review__isnull=False, statements__person=self.object
-                ),
-            ),
-        ).distinct()
+        n = self.object.statements.reviewed().count()
+        return (
+            models.Topic.objects.filter(
+                statements__review__isnull=False, statements__person=self.object
+            )
+            .annotate(
+                items=Count("statements__id"),
+            )
+            .distinct()
+            .annotate(
+                percent=(F("items") * 100 / (n)),
+            )
+        )
 
     def get_statements(self):
         return self.object.statements.reviewed()
 
     def get_statements_count(self):
         return self.get_statements().count()
-
-    def get_topics_names(self):
-        return [
-            {
-                "id": t.id,
-                "title": t.title,
-                "url": reverse(
-                    "s:person_topic", kwargs={"pk": self.object.pk, "topic_pk": t.pk}
-                ),
-            }
-            for t in self.get_topics()
-        ]
 
 
 class PersonTopicDetailView(PersonDetailView):
@@ -90,21 +83,19 @@ class TopicDetailView(DetailView):
         return models.Statement.objects.reviewed().filter(topics=self.object)
 
     def get_people(self):
-        return models.Person.objects.filter(
-            statements__topics=self.object, statements__review__isnull=False
-        ).distinct()
-
-    def get_people_names(self):
-        return [
-            {
-                "id": p.id,
-                "name": p.name,
-                "url": reverse(
-                    "s:topic_person", kwargs={"pk": self.object.pk, "person_pk": p.pk}
-                ),
-            }
-            for p in self.get_people()
-        ]
+        n = self.object.statements.reviewed().count()
+        return (
+            models.Person.objects.filter(
+                statements__topics=self.object, statements__review__isnull=False
+            )
+            .annotate(
+                items=Count("statements__id"),
+            )
+            .distinct()
+            .annotate(
+                percent=(F("items") * 100 / (n)),
+            )
+        )
 
 
 class TopicPersonDetailView(TopicDetailView):
