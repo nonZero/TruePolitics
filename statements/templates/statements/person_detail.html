@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-md-6 col-lg-4 col-xl-2 sidebar ">
-            <a class="text-decoration-none text-dark" href="{% url "s:person" object.pk %}">
+            <a class="text-decoration-none text-dark d-flex flex-column align-items-center" href="{% url "s:person" object.pk %}">
                 <h1 class="sidebar-title text-center">
                     {{ object }}
                 </h1>
@@ -24,57 +24,38 @@
                 </strong>
             </div>
             <h1 class="d-flex   align-items-center justify-content-center flex-column mt-3">
-                98
+                {{ view.get_statements_count }}
                 <div>
                     שקרים
                 </div>
             </h1>
-            <div class="sidebar-buttons w-100">
-                <div x-data="{ search: '' }" class="w-100">
-                    <div class="w-100"
-                         x-data="{
-                            search: '',
-                            items: topics,
-                            get filteredItems() {
-                                return this.items.filter(
-                                    i => i.title.includes(this.search)
-                                )
-                            }
-                        }"
+
+            <div class="sidebar-buttons w-100"
+                 x-data="{
+                      search: '',
+                      show_item(el) {
+                        return this.search === '' || el.textContent.includes(this.search)
+                      }
+                    }">
+              <input class="form-control" type="search" placeholder="חיפוש נושא" x-model="search">
+
+                {% for t in view.get_topics %}
+                    <a class="btn btn-sidebar btn-block mb-1 {% if view.topic.pk  == t.pk %} btn-active {% endif %}"
+                       href="{% url "s:person_topic" object.pk t.pk %}"
+                       x-show="show_item($el)"
                     >
-                        <input x-model="search"
-                               placeholder="חיפוש נושא"
-                               class="form-control mb-4"
-                        >
-                        <h5>
-                            נושאים
-                        </h5>
-                        <div class="sidebar-buttons">
-                            <template x-for="item in filteredItems"
-                                      :key="item.title">
+                        <span>
+                            {{ t.title }}
+                        </span>
+                        <span class="float-end">20</span>
+                    </a>
+                {% endfor %}
 
-                                <a class="btn btn-sidebar btn-block mb-1 " :class="item.id == {{ object.topic_pk }} ? 'btn-active' : '' "
-                                   :href="item.url"
-                                >
-                                    <span x-text="item.title">
-
-                                    </span>
-                                    <span class="float-end">20</span>
-                                </a>
-                            </template>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <div class="col-md-6 col-lg-8 col-xl-10">
+        <div class="statements col-md-6 col-lg-8 col-xl-10">
             {% include "statements/_statements.html" with statements=view.get_statements %}
         </div>
     </div>
-
-    {{ view.get_topics_names|json_script:"topics" }}
-    <script>
-        const topics = JSON.parse(document.getElementById('topics').textContent);
-    </script>
 {% endblock %}

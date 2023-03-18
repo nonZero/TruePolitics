@@ -13,8 +13,13 @@
     flex-direction: column;
     align-items: center;
     background: #F7F8F9;
+    min-height: 95vh;
 }
-
+@media screen and (max-width: 768px) {
+    .sidebar {
+        min-height: 0;
+    }
+}
 .sidebar-topics, .sidebar-buttons {
     margin-block: 1rem;
     display: flex;
@@ -69,7 +74,7 @@
 }
 
 .sidebar-img img {
-    height: 150%
+    height: 130%
 }
 
 .card-title a {
@@ -123,3 +128,19 @@
 }
 
 
+.navbar{
+    height: 5vh;
+}
+.statements{
+    height: 95vh;
+    overflow-y: scroll;
+
+}
+
+@media screen and (max-width: 768px) {
+   .statements{
+    height: auto;
+    overflow-y: auto;
+
+}
+}

@@ -43,6 +43,9 @@ class PersonDetailView(DetailView):
     def get_statements(self):
         return self.object.statements.reviewed()
 
+    def get_statements_count(self):
+        return self.get_statements().count()
+
     def get_topics_names(self):
         return [
             {
