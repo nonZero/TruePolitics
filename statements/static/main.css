@@ -7,13 +7,15 @@
 :root{
   --link: #0066FF;
 }
-
+body{
+    background: #F7F8F9;
+}
 .sidebar {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    min-height: 95vh;
+    background: white;
+    min-height: 93vh;
 }
 
 .main-content {
@@ -133,10 +135,10 @@
 
 
 .navbar{
-    height: 5vh;
+    background: white;
 }
 .statements{
-    height: 95vh;
+    height: 93vh;
     overflow-y: scroll;
 
 }
@@ -158,8 +160,9 @@
     border-radius: 5px;
 }
 
+.h-93vh{
+    min-height: 93vh;
 }
-
 @media screen and (max-width: 768px) {
    .statements{
     height: auto;
