@@ -1,8 +1,7 @@
 from django.db.models import Count, Q, F
 from django.shortcuts import get_object_or_404
-from django.urls import reverse
-from django.views.generic import ListView, DetailView
 from django.utils.translation import gettext_lazy as _
+from django.views.generic import ListView, DetailView
 
 from . import models
 
@@ -15,7 +14,7 @@ class StatementListView(ListView):
         return models.Statement.objects.reviewed()
 
     def people(self):
-        return models.Person.objects.annotate(
+        return models.Person.objects.filter(statements__isnull=False).annotate(
             items=Count("statements__id", filter=Q(statements__review__isnull=False)),
         )[:8]
 
