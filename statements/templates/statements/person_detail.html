@@ -2,17 +2,17 @@
 {% load i18n %}
 {% block content %}
 
-
     <div class="row">
-        <div class="col-s-6 col-lg-2 sidebar ">
-
-            <h1 class="sidebar-title text-center">
-                {{ object }}
-            </h1>
-            <div class="sidebar-img">
-                <img src="{{ object.img_url }}"
-                     alt="{{ object }}">
-            </div>
+        <div class="col-md-6 col-lg-4 col-xl-2 sidebar ">
+            <a class="text-decoration-none text-dark" href="{% url "s:person" object.pk %}">
+                <h1 class="sidebar-title text-center">
+                    {{ object }}
+                </h1>
+                <div class="sidebar-img">
+                    <img src="{{ object.img_url }}"
+                         alt="{{ object }}">
+                </div>
+            </a>
             <i><strong>
                 {{ object.affiliation }}
             </strong> </i>
@@ -23,12 +23,12 @@
                     {% endif %}
                 </strong>
             </div>
-        <h1 class="d-flex   align-items-center justify-content-center flex-column mt-3">
-            98
-            <div>
-                שקרים
-            </div>
-        </h1>
+            <h1 class="d-flex   align-items-center justify-content-center flex-column mt-3">
+                98
+                <div>
+                    שקרים
+                </div>
+            </h1>
             <div class="sidebar-buttons w-100">
                 <div x-data="{ search: '' }" class="w-100">
                     <div class="w-100"
@@ -52,9 +52,10 @@
                         <div class="sidebar-buttons">
                             <template x-for="item in filteredItems"
                                       :key="item.title">
-                                <a class="btn btn-sidebar btn-block mb-1 "
+
+                                <a class="btn btn-sidebar btn-block mb-1 " :class="item.id == {{ object.topic_pk }} ? 'btn-active' : '' "
                                    :href="item.url"
-                                   >
+                                >
                                     <span x-text="item.title">
 
                                     </span>
@@ -67,7 +68,7 @@
             </div>
         </div>
 
-        <div class="col-s-6 col-lg-8">
+        <div class="col-md-6 col-lg-8 col-xl-10">
             {% include "statements/_statements.html" with statements=view.get_statements %}
         </div>
     </div>
