@@ -4,60 +4,61 @@
 
 
     <div class="card-body pt-1">
-        <div class="row">
-            <div class="col-1">
-
-            </div>
-            <div class="col">
-                <div class="d-flex gap-1 text-secondary">
+        <div class="container">
+            <div class="row">
+                {#                <div class="col-lg-1 col-md-3 d-flex justify-content-center align-items-center">#}
+                {#                    <div class=" d-inline-flex flex-column  justify-content-center align-items-center ">#}
+                {#                        <a href="#" class="text-decoration-none text-dark">#}
+                {#                            <i class="bi bi-chevron-up"></i>#}
+                {#                        </a>#}
+                {#                        <span>#}
+                {#                        דירוג#}
+                {#                    </span>#}
+                {#                        <a href="#" class="text-decoration-none text-dark">#}
+                {#                            <i class="bi bi-chevron-down"></i>#}
+                {#                        </a>#}
+                {#                    </div>#}
+                {#                    {% if false %}#}
+                {#                        <div class="float-start mx-2 rounded-circle statement-person-img"#}
+                {#                             style="background-image: url({{ o.person.img_url }})">#}
+                {#                        </div>#}
+                {#                    {% endif %}#}
+                {#                </div>#}
+                <div class="d-flex gap-1 text-secondary mb-2 p-0">
                     <a class="text-decoration-none d-inline" href="#">
                         {{ o.reviewed_by }}
                     </a>
                     <span>
-              {{ o.date }}
-        </span>
-                </div>
-
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-1 col-md-3 d-flex justify-content-center align-items-center">
-                    <div class=" d-inline-flex flex-column  justify-content-center align-items-center ">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <i class="bi bi-chevron-up"></i>
-                        </a>
-                        <span>
-                        דירוג
+                       {{ o.created_at|date:"d בM Y" }}
                     </span>
-                        <a href="#" class="text-decoration-none text-dark">
-                            <i class="bi bi-chevron-down"></i>
-                        </a>
-                    </div>
-                    {% if false %}
-                        <div class="float-start mx-2 rounded-circle statement-person-img"
-                             style="background-image: url({{ o.person.img_url }})">
-                        </div>
-                    {% endif %}
                 </div>
                 <div class="col-xl-2 col-md-12 p-0 overflow-hidden">
                     <img class="statement-img"
                          src="data:image/jpeg;base64,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"
                          alt="">
                 </div>
-                <div class="col">
+                <div class="col d-flex flex-column justify-content-between">
                     <div class="row mb-3">
                         <div class="col-9">
                             {% if with_author %}
-                                <a class="text-decoration-none text-dark" href="{{ o.person.get_absolute_url }}">{{ o.person }}</a>:
+                                <a class="text-decoration-none text-dark"
+                                   href="{{ o.person.get_absolute_url }}">{{ o.person }}</a>:
                             {% endif %}
                             <a class="fw-bold text-decoration-none text-dark" href="{% url 's:detail' o.pk %}">
                                 "{{ o.content|linebreaksbr }}"
                             </a>
                         </div>
-                        <div class="col text-secondary text-end">
-                            <img class="card-logo" src="{% static 'images/twitter-logo.webp' %}" alt="">
-                            19 באוקטובר 2021
+                        <div class="col row text-secondary d-flex justify-content-between align-items-end">
+                            <div class="col"></div>
+                            <div class="col-9 d-flex justify-content-between align-items-center">
+                                <a href="#" class="d-flex justify-content-center align-items-center">
+                                    <img class="card-logo" src="{% static 'images/twitter-logo.webp' %}" alt="">
+                                </a>
+                                <span>
+                                 {{ o.date }}
+                            </span>
+
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -67,13 +68,21 @@
                                 {{ o.review }}
                             </strong>
                         </div>
-                        <div class="col text-secondary text-end">
-                            <img class="card-logo" src="{% static 'images/twitter-logo.webp' %}" alt="">
-                            19 באוקטובר 2021
+                         <div class="col row text-secondary d-flex justify-content-between align-items-end">
+                            <div class="col"></div>
+                            <div class="col-9 d-flex justify-content-between align-items-center">
+                                <a href="#" class="d-flex justify-content-center align-items-center">
+                                    <img class="card-logo" src="{% static 'images/twitter-logo.webp' %}" alt="">
+                                </a>
+                                <span>
+                                 {{ o.review_date }}
+                            </span>
+
+                            </div>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-9">
+                    <div class="row">
+                        <div class="col-9 d-flex align-items-end">
                             {% for t in o.topics.all %}
                                 <a class="badge rounded-pill text-decoration-none text-dark border-dark border fw-normal"
                                    href="{% url 's:topic' t.pk %}">
@@ -86,14 +95,17 @@
                         50 תגובות
                     </span>
                             <div>
-                                <a href="https://twitter.com/intent/tweet?text={{ o.content }}" target="_blank" class="text-decoration-none">
+                                <a href="https://twitter.com/intent/tweet?text={{ o.content }}" target="_blank"
+                                   class="text-decoration-none">
                                     <img class="card-logo" src="{% static 'images/twitter-logo.webp' %}" alt="">
                                 </a>
-                                <a href="https://wa.me/?text={{ o.content }}" target="_blank" class="text-decoration-none">
+                                <a href="https://wa.me/?text={{ o.content }}" target="_blank"
+                                   class="text-decoration-none">
                                     <img class="card-logo" src="{% static 'images/whatsapp-logo.png' %}" alt="">
                                 </a>
 
-                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="text-decoration-none">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+                                   target="_blank" class="text-decoration-none">
                                     <img class="card-logo" src="{% static 'images/facebook-logo.png' %}" alt="">
                                 </a>
                             </div>

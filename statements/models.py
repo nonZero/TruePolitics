@@ -61,7 +61,6 @@ class Statement(models.Model):
     )
     date = models.DateField(_("date"))
     content = models.TextField(_("content"))
-
     rating = models.IntegerField(
         choices=Rating.choices,
         null=True,
@@ -69,6 +68,9 @@ class Statement(models.Model):
         blank=True,
     )
     review = models.TextField(blank=True, null=True, verbose_name=_("review"))
+    review_date = models.DateField(_("review_date"))
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     reviewed_by = models.CharField(
         _("reviewed_by"), max_length=200, blank=True, null=True
     )

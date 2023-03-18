@@ -2,7 +2,7 @@
 {% block content %}
 
     <div class="row">
-    <div class="col-s-6 col-lg-2 sidebar">
+    <div class="col-md-6 col-lg-4 col-xl-2 sidebar">
         <h1 class="sidebar-title">
             {{ object }}
         </h1>
@@ -36,7 +36,7 @@
             </div>
     </div>
 
-    <div class="col-s-6 col-lg-8">
+    <div class="statements  col-md-6 col-lg-8 col-xl-10">
         {% include "statements/_statements.html" with statements=view.get_statements with_author=1 %}
     </div>
 
