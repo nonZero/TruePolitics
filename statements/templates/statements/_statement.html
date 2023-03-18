@@ -39,16 +39,17 @@
                     </div>
 
                     <div class="col-sm">
-                        <div>
-                            <a class="fw-bold text-decoration-none text-dark"
-                               class="mb-2"
-                               target="_blank"
-                               href="{{ o.resources.first.url }}">
-                                {% if with_author %}
-                                    <span>
+                        <div>    {% if with_author %}
+                                <a href="{% url 's:person' o.person.pk %}"
+                                class=" text-decoration-none text-dark mb-2"
+                                >
                                     {{ o.person }}:
-                                </span>
-                                {% endif %}
+                                </a>
+                            {% endif %}
+                            <a class="fw-bold text-decoration-none text-dark mb-2"
+                               target="_blank"
+
+                            href="{{ o.resources.first.url }}">
 
                                 {{ o.content|linebreaksbr }}
                             </a>
@@ -67,7 +68,7 @@
                         <div>
                             <div>
                                 <a href="#"
-                                class="d-flex justify-content-center align-items-start text-decoration-none text-dark">
+                                class="d-flex justify-contet-center align-items-start text-decoration-none text-dark">
                                     <span>{% trans "Review" %}:</span>
                                     <strong>
                                         {{ o.review }}
