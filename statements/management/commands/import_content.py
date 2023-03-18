@@ -25,7 +25,7 @@ resource_url,מקור טענה
 type,הבטחה
 review,הפרכה
 review_date,תאריך הפרכה
-resource_url,מקור הפרכה
+review_url,מקור הפרכה
 """.strip().splitlines()
 
 COLS = dict(s.split(",")[::-1] for s in COLS)
@@ -35,15 +35,19 @@ class Command(BaseCommand):
     help = "import content"
 
     def handle(self, *args, **options):
-        df = pd.read_csv(settings.BASE_DIR / "statements/data/content.csv").rename(
-            columns=COLS
+        df = pd.read_csv(
+            settings.BASE_DIR / "statements/data/content.csv", dtype=str
+        ).rename(
+            columns=COLS,
         )
+        df = df.apply(lambda s: s.str.strip())
+        df = df.mask(pd.isna(df), None)
         # assert set(df.columns) == set(COLS.keys())
 
         # print(df.to_csv(index=False))
 
         # df = df[df.review != ""]
-        df = df.iloc[:16]
+        # df = df.iloc[:16]
 
         Resource.objects.all().delete()
         Statement.objects.all().delete()
@@ -60,8 +64,9 @@ class Command(BaseCommand):
                     content=row.content,
                     rating=Statement.Rating.RED,
                     review=row.review,
-                    date=row.date,
-                    review_date=row.review_date,
+                    review_url=row.review_url,
+                    date=row.date or None,
+                    review_date=row.review_date or None,
                     reviewed_by=random.choice(REVIEWERS),
                     img_url=faker.image_url(400, 300),
                 )
@@ -81,3 +86,4 @@ class Command(BaseCommand):
             except Exception as e:
                 print(row)
                 print(e)
+                # raise

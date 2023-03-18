@@ -71,7 +71,8 @@ class Statement(models.Model):
         blank=True,
     )
     review = models.TextField(blank=True, null=True, verbose_name=_("review"))
-    review_date = models.DateField(_("review_date"))
+    review_url = models.URLField(_("review url"), max_length=3000, null=True)
+    review_date = models.DateField(_("review date"), null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     reviewed_by = models.CharField(

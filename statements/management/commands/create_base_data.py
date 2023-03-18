@@ -10,12 +10,13 @@ from statements.models import Person, Topic
 TOPICS = """
 מדיני
 בטחוני
-כלכלה
+כלכלי
 משפטי
 חינוך
 חרדים
 דת
 דיור
+פוליטי
 """.strip().splitlines()
 
 

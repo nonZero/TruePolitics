@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 22:19+0200\n"
-"PO-Revision-Date: 2023-03-17 22:19+0200\n"
+"POT-Creation-Date: 2023-03-18 15:58+0200\n"
+"PO-Revision-Date: 2023-03-18 15:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: statements/admin.py:34 statements/models.py:36 statements/models.py:60
+#: statements/admin.py:34 statements/models.py:39 statements/models.py:63
 msgid "topics"
 msgstr "נושאים"
 
@@ -31,7 +31,7 @@ msgstr "שם"
 msgid "affiliation"
 msgstr "שיוך"
 
-#: statements/models.py:9 statements/models.py:31
+#: statements/models.py:9 statements/models.py:34
 msgid "title"
 msgstr "כותרת"
 
@@ -39,115 +39,120 @@ msgstr "כותרת"
 msgid "image url"
 msgstr "תמונה"
 
-#: statements/models.py:19 statements/models.py:57
+#: statements/models.py:22 statements/models.py:60
 msgid "person"
 msgstr "אישיות"
 
-#: statements/models.py:20
+#: statements/models.py:23
 msgid "people"
 msgstr "אישים"
 
-#: statements/models.py:32
+#: statements/models.py:35
 msgid "description"
 msgstr "תיאור"
 
-#: statements/models.py:35
+#: statements/models.py:38
 msgid "topic"
 msgstr "נושא"
 
-#: statements/models.py:52
+#: statements/models.py:55
 msgid "True"
 msgstr "אמת"
 
-#: statements/models.py:53
+#: statements/models.py:56
 msgid "Half True"
 msgstr "ככה ככה"
 
-#: statements/models.py:54
+#: statements/models.py:57
 msgid "False"
 msgstr "שקר"
 
-#: statements/models.py:62
+#: statements/models.py:65
 msgid "date"
 msgstr "תאריך"
 
-#: statements/models.py:63
+#: statements/models.py:66
 msgid "content"
 msgstr "תוכן"
 
-#: statements/models.py:68
+#: statements/models.py:70
 msgid "rating"
 msgstr "דירוג"
 
-#: statements/models.py:71
+#: statements/models.py:73
 msgid "review"
 msgstr "ביקורת"
 
-#: statements/models.py:73
+#: statements/models.py:74
+msgid "review url"
+msgstr "קישור לביקורת"
+
+#: statements/models.py:75
+msgid "review date"
+msgstr "תאריך הביקורת"
+
+#: statements/models.py:79
 msgid "reviewed_by"
 msgstr "נסקר על ידי"
 
-#: statements/models.py:79
+#: statements/models.py:85
 msgid "statement"
 msgstr "אמירה"
 
-#: statements/models.py:80
+#: statements/models.py:86
 msgid "statements"
 msgstr "אמירות"
 
-#: statements/models.py:88
+#: statements/models.py:94
 msgid "Other"
 msgstr "אחר"
 
-#: statements/models.py:89
+#: statements/models.py:95
 msgid "Tweet"
 msgstr "ציוץ"
 
-#: statements/models.py:90
+#: statements/models.py:96
 msgid "Haaretz"
 msgstr "הארץ"
 
-#: statements/models.py:91
+#: statements/models.py:97
 msgid "YNet"
 msgstr "Ynet"
 
-#: statements/templates/base.html:15 statements/templates/base.html:23
+#: statements/templates/base.html:15
 msgid "True Politics"
 msgstr "טרו פוליטיקס"
 
-#: statements/templates/base.html:29 statements/templates/base.html:30
-#: statements/templates/base.html:33
-msgid "Search"
-msgstr "חיפוש"
-
-#: statements/templates/statements/_statement.html:19
+#: statements/templates/statements/_statement.html:62
 msgid "Review"
 msgstr "הפרכה"
 
-#: statements/templates/statements/_statement.html:22
-msgid "published at"
-msgstr "פורסם ב:"
-
-#: statements/templates/statements/_statement.html:24
-msgid "by"
-msgstr "על ידי"
-
-#: statements/templates/statements/statement_list.html:7
-msgid "Latest Lies"
-msgstr "שקרים אחרונים"
-
-#: statements/templates/statements/statement_list.html:13
-msgid "People"
-msgstr "שקרנים"
-
-#: statements/templates/statements/statement_list.html:26
-msgid "Topics"
-msgstr "נושאים"
+#: statements/templates/statements/person_detail.html:47
+msgid "items"
+msgstr "פריטים"
 
 #: statements/templatetags/web.py:51
 msgid ", "
 msgstr ""
 
-#: statements/views.py:11
+#: statements/views.py:10
 msgid "Home Page"
 msgstr "דף הבית"
+
+#~ msgid "Search"
+#~ msgstr "חיפוש"
+
+#~ msgid "published at"
+#~ msgstr "פורסם ב:"
+
+#~ msgid "by"
+#~ msgstr "על ידי"
+
+#~ msgid "Latest Lies"
+#~ msgstr "שקרים אחרונים"
+
+#~ msgid "People"
+#~ msgstr "שקרנים"
+
+#~ msgid "Topics"
+#~ msgstr "נושאים"
