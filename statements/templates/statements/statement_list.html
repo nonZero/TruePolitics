@@ -1,7 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 {% load web i18n %}
 {% block content %}
+
     <div class="row h-93vh">
+        <div class="sidebar col-2">
+            <img src="{% static 'images/sidebar.png' %}" alt="">
+        </div>
 
 
         <div class="col container pt-5 main-content">
@@ -32,17 +37,130 @@
                         <div class="col-lg-12">
                             <h5>סינון לפי פוליטיקאי</h5>
                             <div class="row">
-                                {% for p in view.people %}
-                                    <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
-                                        <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
-                                           href="{% url "s:person"  p.pk %}">
-                                            <div class="float-start mx-2 rounded-circle statement-person-img"
-                                                 style="background-image: url({{ p.img_url }})">
-                                            </div>
-                                            {{ p }}
-                                        </a>
-                                    </div>
-                                {% endfor %}
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/80">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/bibi.png' %}" alt="">
+                                        </div>
+                                        בנימין נתניהו
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/lapid.png' %}" alt="">
+                                        </div>
+                                        יאיר לפיד
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/gantz.png' %}" alt="">
+                                        </div>
+                                        בני גנץ
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/bengvir.png' %}" alt="">
+                                        </div>
+                                        איתמר בן גביר
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/deri.png' %}" alt="">
+                                        </div>
+                                        אריה דרעי </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/liberman.png' %}" alt="">
+                                        </div>
+                                        אביגדור ליברמן </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/abas.png' %}" alt="">
+                                        </div>
+                                        מנסור עבאס </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/michaeli.png' %}" alt="">
+                                        </div>
+                                        מרב מיכאלי </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/ode.png' %}" alt="">
+                                        </div>
+                                        איימן עודה </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/smutriz.png' %}" alt="">
+                                        </div>
+                                        בצלאל סמוטריץ’ </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/gafni.png' %}" alt="">
+                                        </div>
+                                        משה גפני
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
+                                    <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
+                                       href="/p/1">
+                                        <div class="float-start mx-2 "
+                                             style="">
+                                            <img src="{% static 'images/politicians/goldknopf.png' %}" alt="">
+                                        </div>
+                                        יצחק גולדקנופף </a>
+                                </div>
+                                {#                                {% for p in view.people %}#}
+                                {#                                    <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">#}
+                                {#                                        <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"#}
+                                {#                                           href="{% url "s:person"  p.pk %}">#}
+                                {#                                            <div class="float-start mx-2 rounded-circle statement-person-img"#}
+                                {#                                                 style="background-image: url({{ p.img_url }})">#}
+                                {#                                            </div>#}
+                                {#                                            {{ p }}#}
+                                {#                                        </a>#}
+                                {#                                    </div>#}
+                                {#                                {% endfor %}#}
                             </div>
                         </div>
                     </div>

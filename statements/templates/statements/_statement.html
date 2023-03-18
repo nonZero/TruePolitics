@@ -17,8 +17,11 @@
 
             <div class="col d-flex flex-column justify-content-between">
                 <div class="row">
-                    <div class="col-1 text-center">
+                    <div class="col-1 text-center d-flex flex-column">
+                        <i class="bi bi-chevron-up"></i>
                         דרג
+                        <i class="bi bi-chevron-down"></i>
+
                     </div>
                     <div class="col-sm-2 col-lg-3 position-relative">
                         <div class="position-absolute"
@@ -37,14 +40,17 @@
 
                     <div class="col-sm">
                         <div>
-                            {% if with_author %}
-                                <a class="text-decoration-none text-dark"
-                                   href="{{ o.person.get_absolute_url }}">{{ o.person }}</a>:
-                            {% endif %}
                             <a class="fw-bold text-decoration-none text-dark"
                                class="mb-2"
-                               href="{% url 's:detail' o.pk %}">
-                                "{{ o.content|linebreaksbr }}"
+                               target="_blank"
+                               href="{{ o.resources.first.url }}">
+                                {% if with_author %}
+                                    <span>
+                                    {{ o.person }}:
+                                </span>
+                                {% endif %}
+
+                                {{ o.content|linebreaksbr }}
                             </a>
                             <div>
                                 <a href="https://twitter.com/intent/tweet?text={{ o.content }}"
@@ -59,18 +65,18 @@
                         </div>
 
                         <div>
-                            <span>{% trans "Review" %}:</span>
-                            <strong>
-                                {{ o.review }}
-                            </strong>
                             <div>
                                 <a href="#"
-                                   class="d-flex justify-content-center align-items-center">
-                                    <img class="card-logo"
-                                         src="{% static 'images/globes-logo.png' %}"
-                                         alt="">
+                                class="d-flex justify-content-center align-items-start text-decoration-none text-dark">
+                                    <span>{% trans "Review" %}:</span>
+                                    <strong>
+                                        {{ o.review }}
+                                    </strong>
                                 </a>
                                 <span>
+                                <img class="card-logo"
+                                     src="{% static 'images/globes-logo.png' %}"
+                                     alt="">
                                  {{ o.review_date }}
                             </span>
                             </div>
