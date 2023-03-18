@@ -6,10 +6,6 @@
             <div class="row">
                 {% include "statements/_statement.html" with o=object with_author=1 show_resources=1 %}
             </div>
-            {% for s in view.get_statements %}
-                {% include "statements/_statement.html" with o=s with_author=1  %}
-            {% endfor %}
-
         </div>
     </div>
 {% endblock %}

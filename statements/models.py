@@ -77,7 +77,7 @@ class Statement(models.Model):
     reviewed_by = models.CharField(
         _("reviewed_by"), max_length=200, blank=True, null=True
     )
-
+    img_url = models.URLField(null=True)
     objects = StatementQuerySet.as_manager()
 
     class Meta:

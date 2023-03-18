@@ -131,6 +131,9 @@ body{
     /*object-fit: cover;*/
     /*max-width: 200px;*/
     /*height: 100%;*/
+    /*max-height: 8em;*/
+    max-width: 100%;
+    /*max-height: 10em;*/
 }
 
 
