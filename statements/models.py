@@ -7,7 +7,7 @@ class Person(models.Model):
     name = models.CharField(_("name"), max_length=250, unique=True)
     affiliation = models.CharField(_("affiliation"), max_length=500, blank=False)
     title = models.CharField(_("title"), max_length=200, blank=True, null=True)
-    img_url = models.URLField(_("image url"), null=True)
+    img_url = models.URLField(_("image url"), max_length=3000, null=True)
 
     def __str__(self):
         return self.name
@@ -77,7 +77,7 @@ class Statement(models.Model):
     reviewed_by = models.CharField(
         _("reviewed_by"), max_length=200, blank=True, null=True
     )
-    img_url = models.URLField(null=True)
+    img_url = models.URLField(null=True, max_length=3000)
     objects = StatementQuerySet.as_manager()
 
     class Meta:
@@ -100,7 +100,7 @@ class Resource(models.Model):
     statement = models.ForeignKey(
         Statement, models.PROTECT, blank=True, related_name="resources"
     )
-    url = models.URLField()
+    url = models.URLField(max_length=3000)
     timestamp = models.DateTimeField()
     type = models.IntegerField(choices=ResourceType.choices, default=ResourceType.TWEET)
     content = models.TextField()
