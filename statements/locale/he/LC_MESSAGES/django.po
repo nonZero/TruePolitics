@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-18 15:58+0200\n"
-"PO-Revision-Date: 2023-03-18 15:58+0200\n"
+"POT-Creation-Date: 2023-03-25 08:09+0300\n"
+"PO-Revision-Date: 2023-03-25 08:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he\n"
@@ -123,13 +123,25 @@ msgstr "Ynet"
 msgid "True Politics"
 msgstr "טרו פוליטיקס"
 
-#: statements/templates/statements/_statement.html:62
+#: statements/templates/statements/_statement.html:16
 msgid "Review"
 msgstr "הפרכה"
+
+#: statements/templates/statements/_statement.html:24
+msgid "Source"
+msgstr "מקור"
 
 #: statements/templates/statements/person_detail.html:47
 msgid "items"
 msgstr "פריטים"
+
+#: statements/templates/statements/statement_list.html:7
+msgid "People"
+msgstr "אנשים"
+
+#: statements/templates/statements/statement_list.html:19
+msgid "Latest Stories"
+msgstr "סיפורים אחרונים"
 
 #: statements/templatetags/web.py:51
 msgid ", "
@@ -139,6 +151,12 @@ msgstr ""
 msgid "Home Page"
 msgstr "דף הבית"
 
+#~ msgid "A story by"
+#~ msgstr "סיפורו של "
+
+#~ msgid "Topics"
+#~ msgstr "נושאים"
+
 #~ msgid "Search"
 #~ msgstr "חיפוש"
 
@@ -147,12 +165,3 @@ msgstr "דף הבית"
 
 #~ msgid "by"
 #~ msgstr "על ידי"
-
-#~ msgid "Latest Lies"
-#~ msgstr "שקרים אחרונים"
-
-#~ msgid "People"
-#~ msgstr "שקרנים"
-
-#~ msgid "Topics"
-#~ msgstr "נושאים"

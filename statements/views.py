@@ -14,14 +14,14 @@ class StatementListView(ListView):
         return models.Statement.objects.reviewed()
 
     def people(self):
-        return models.Person.objects.filter(statements__isnull=False).annotate(
+        return models.Person.objects.annotate(
             items=Count("statements__id", filter=Q(statements__review__isnull=False)),
-        )[:8]
+        ).filter(items__gte=1)
 
     def topics(self):
         return models.Topic.objects.annotate(
             items=Count("statements__id", filter=Q(statements__review__isnull=False)),
-        )[:8]
+        ).filter(items__gte=1)
 
     def get_statements(self):
         return models.Statement.objects.reviewed()[:5]
@@ -34,32 +34,28 @@ class StatementDetailView(DetailView):
         return models.Statement.objects.reviewed()
 
 
-class PersonDetailView(DetailView):
-    model = models.Person
+class PersonDetailView(StatementListView):
+    def get(self, request, *args, **kwargs):
+        self.person = get_object_or_404(models.Person, pk=self.kwargs["pk"])
+        return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return super().get_queryset().filter(person=self.person)
 
     def title(self):
-        return self.object.name
+        return self.person.name
 
-    def get_topics(self):
-        n = self.object.statements.reviewed().count()
-        return (
-            models.Topic.objects.filter(
-                statements__review__isnull=False, statements__person=self.object
-            )
-            .annotate(
-                items=Count("statements__id"),
-            )
-            .distinct()
-            .annotate(
-                percent=(F("items") * 100 / (n)),
-            )
-        )
 
-    def get_statements(self):
-        return self.object.statements.reviewed()
+class TopicDetailView(StatementListView):
+    def get(self, request, *args, **kwargs):
+        self.topic = get_object_or_404(models.Topic, pk=self.kwargs["pk"])
+        return super().get(request, *args, **kwargs)
 
-    def get_statements_count(self):
-        return self.get_statements().count()
+    def title(self):
+        return self.topic
+
+    def get_queryset(self):
+        return super().get_queryset().filter(topics=self.topic)
 
 
 class PersonTopicDetailView(PersonDetailView):
@@ -70,31 +66,6 @@ class PersonTopicDetailView(PersonDetailView):
         self.topic = get_object_or_404(models.Topic, pk=self.kwargs["topic_pk"])
 
         return super().get(request, *args, **kwargs)
-
-
-class TopicDetailView(DetailView):
-    model = models.Topic
-
-    def title(self):
-        return self.object
-
-    def get_statements(self):
-        return models.Statement.objects.reviewed().filter(topics=self.object)
-
-    def get_people(self):
-        n = self.object.statements.reviewed().count()
-        return (
-            models.Person.objects.filter(
-                statements__topics=self.object, statements__review__isnull=False
-            )
-            .annotate(
-                items=Count("statements__id"),
-            )
-            .distinct()
-            .annotate(
-                percent=(F("items") * 100 / (n)),
-            )
-        )
 
 
 class TopicPersonDetailView(TopicDetailView):

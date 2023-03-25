@@ -1,175 +1,188 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap');*/
+/*@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");*/
 
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap');
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
-*{
-    font-family: 'Assistant', sans-serif;
-}
-:root{
-  --link: #0066FF;
-}
-body{
-    background: #F7F8F9;
-}
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white;
-    min-height: 93vh;
-}
+/** {*/
+/*    font-family: 'Assistant', sans-serif;*/
+/*}*/
 
-.main-content {
-       background: #F7F8F9;
-}
-@media screen and (max-width: 768px) {
-    .sidebar {
-        min-height: 0;
-    }
-}
-.sidebar-topics, .sidebar-buttons {
-    margin-block: 1rem;
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
+/*:root {*/
+/*    --link: #0066FF;*/
+/*}*/
 
-}
+/*body {*/
+/*    background: #F7F8F9;*/
+/*}*/
 
+/*.sidebar {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    background: white;*/
+/*    min-height: 93vh;*/
+/*}*/
 
-.sidebar-topics h2 {
-    display: flex;
-    align-items: center;
+/*.main-content {*/
+/*    background: #F7F8F9;*/
+/*}*/
 
-}
+/*@media screen and (max-width: 768px) {*/
+/*    .sidebar {*/
+/*        min-height: 0;*/
+/*    }*/
+/*}*/
 
-.sidebar-buttons .button {
-    background: transparent;
-    border-radius: 5px;
-    border: 1px solid black;
-    padding: .3rem;
-    color: black;
-    text-decoration: none;
-}
+/*.sidebar-topics, .sidebar-buttons {*/
+/*    margin-block: 1rem;*/
+/*    display: flex;*/
+/*    gap: 2rem;*/
+/*    flex-direction: column;*/
 
-.btn-active {
-    border: 1px solid black;
-    font-weight: bold;
-}
+/*}*/
 
-.sidebar-topics h2 input {
-    /*width: 50%;*/
-    border-radius: 5px;
-    border: 1px solid black;
-    margin: auto;
-}
+/*.topic-nav .nav-link {*/
+/*      border: 1px solid #ccc;*/
+/*}*/
 
-.sidebar-topics .sidebar-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
+/*.sidebar-topics h2 {*/
+/*    display: flex;*/
+/*    align-items: center;*/
 
-.sidebar-affiliation-img img {
-    max-height: 50px;
-}
+/*}*/
 
-.sidebar-img {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    border-radius: 50%;
-}
+/*.sidebar-buttons .button {*/
+/*    background: transparent;*/
+/*    border-radius: 5px;*/
+/*    border: 1px solid black;*/
+/*    padding: .3rem;*/
+/*    color: black;*/
+/*    text-decoration: none;*/
+/*}*/
 
-.sidebar-img img {
-    height: 130%
-}
+/*.btn-active {*/
+/*    border: 1px solid black;*/
+/*    font-weight: bold;*/
+/*}*/
 
-.card-title a {
-    text-decoration: none;
-    color: black;
-}
+/*.sidebar-topics h2 input {*/
+/*    !*width: 50%;*!*/
+/*    border-radius: 5px;*/
+/*    border: 1px solid black;*/
+/*    margin: auto;*/
+/*}*/
 
+/*.sidebar-topics .sidebar-buttons {*/
+/*    display: flex;*/
+/*    gap: 1rem;*/
+/*    flex-wrap: wrap;*/
+/*}*/
 
-.statement-person-img{
-    width: 100px;
-    height: 100px;
-    /*overflow: hidden;*/
-    border-radius: 50%;
-    background-repeat: no-repeat;
-    background-position: 100% 0%;
+/*.sidebar-affiliation-img img {*/
+/*    max-height: 50px;*/
+/*}*/
 
-}
+/*.sidebar-img {*/
+/*    width: 150px;*/
+/*    height: 150px;*/
+/*    overflow: hidden;*/
+/*    border-radius: 50%;*/
+/*}*/
 
-.home-page{
-    height: 90vh;
-}
+/*.sidebar-img img {*/
+/*    height: 130%*/
+/*}*/
 
-.topics-flex{
-    column-gap: 10px;
-}
-
-.topics-flex a{
-    width: 24%;
-}
-
-.btn-custom{
-    border: 1px solid lightgrey;
-}
-
-.btn-sidebar{
-    background: white;
-}
-
-.reviewed-by{
-    color: var(--link);
-}
-
-.card-logo{
-    width: 30px
-}
-
-.statement-img{
-    /*object-fit: cover;*/
-    /*max-width: 200px;*/
-    /*height: 100%;*/
-    /*max-height: 8em;*/
-    max-width: 100%;
-    /*max-height: 10em;*/
-}
+/*.card-title a {*/
+/*    text-decoration: none;*/
+/*    color: black;*/
+/*}*/
 
 
-.navbar{
-    background: white;
-}
-.statements{
-    height: 93vh;
-    overflow-y: scroll;
+/*.statement-person-img {*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+/*    !*overflow: hidden;*!*/
+/*    border-radius: 50%;*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: 100% 0%;*/
 
-}
-.btn-progress {
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-}
-.btn-progress::before {
-    position: absolute;
-    content: "";
-    display: block;
-    width: var(--progress, 0);
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: lightgrey;
-    z-index: -1;
-    border-radius: 5px;
-}
+/*}*/
 
-.h-93vh{
-    min-height: 93vh;
-}
-@media screen and (max-width: 768px) {
-   .statements{
-    height: auto;
-    overflow-y: auto;
+/*.home-page {*/
+/*    height: 90vh;*/
+/*}*/
 
-}
-}
+/*.topics-flex {*/
+/*    column-gap: 10px;*/
+/*}*/
+
+/*.topics-flex a {*/
+/*    width: 24%;*/
+/*}*/
+
+/*.btn-custom {*/
+/*    border: 1px solid lightgrey;*/
+/*}*/
+
+/*.btn-sidebar {*/
+/*    background: white;*/
+/*}*/
+
+/*.reviewed-by {*/
+/*    color: var(--link);*/
+/*}*/
+
+/*.card-logo {*/
+/*    width: 30px*/
+/*}*/
+
+/*.statement-img {*/
+/*    !*object-fit: cover;*!*/
+/*    !*max-width: 200px;*!*/
+/*    !*height: 100%;*!*/
+/*    !*max-height: 8em;*!*/
+/*    max-width: 100%;*/
+/*    !*max-height: 10em;*!*/
+/*}*/
+
+
+/*.navbar {*/
+/*    background: white;*/
+/*}*/
+
+/*.statements {*/
+/*    height: 93vh;*/
+/*    overflow-y: scroll;*/
+
+/*}*/
+
+/*.btn-progress {*/
+/*    position: relative;*/
+/*    z-index: 2;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*.btn-progress::before {*/
+/*    position: absolute;*/
+/*    content: "";*/
+/*    display: block;*/
+/*    width: var(--progress, 0);*/
+/*    height: 100%;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    background: lightgrey;*/
+/*    z-index: -1;*/
+/*    border-radius: 5px;*/
+/*}*/
+
+/*.h-93vh {*/
+/*    min-height: 93vh;*/
+/*}*/
+
+/*@media screen and (max-width: 768px) {*/
+/*    .statements {*/
+/*        height: auto;*/
+/*        overflow-y: auto;*/
+
+/*    }*/
+/*}*/
+

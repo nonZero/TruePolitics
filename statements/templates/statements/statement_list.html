@@ -1,55 +1,44 @@
 {% extends "base.html" %}
 {% load web i18n %}
 {% block content %}
-    <div class="row h-93vh">
-
-
-        <div class="col container pt-5 main-content">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col">
-
-                        </div>
-                        <div class="col-lg-6 mb-5">
-                            <input class="form-control" type="text" name="search" placeholder="חיפוש">
-                        </div>
-                        <div class="col">
-
-                        </div>
-
-                        <div class="col-lg-12 mb-5">
-                            <h5>סינון לפי נושא</h5>
-                            <div class="row">
-                                {% for t in view.topics %}
-                                    <div class="col-lg-3 col-sm-6 mb-3">
-                                        <a class="btn btn-outline-secondary text-dark btn-lg btn-block btn-custom fs-6 w-100"
-                                           href="{% url "s:topic" t.pk %}">{{ t }}</a>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <h5>סינון לפי פוליטיקאי</h5>
-                            <div class="row">
-                                {% for p in view.people %}
-                                    <div class="col-lg-3 col-sm-6 mb-4 d-flex flex-column justify-content-center align-items-center text-dark text-decoration-none">
-                                        <a class="text-decoration-none text-dark d-flex flex-column justify-content-center align-items-center"
-                                           href="{% url "s:person"  p.pk %}">
-                                            <div class="float-start mx-2 rounded-circle statement-person-img"
-                                                 style="background-image: url({{ p.img_url }})">
-                                            </div>
-                                            {{ p }}
-                                        </a>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="col-lg-2">
+            <h2>
+                {% trans "People" %}
+            </h2>
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action {% if view.person is None %}active{% endif %}"
+                   href="{% url "s:list" %}">
+                    {% trans "All" %} ({{ object_list.count }})
+                </a>
+                {% for p in view.people %}
+                    <a class="list-group-item list-group-item-action {% if p == view.person %}active{% endif %}"
+                       href="{{ p.get_absolute_url }}">
+                        {{ p }} ({{ p.items }})
+                    </a>
+                {% endfor %}
             </div>
+        </div>
+        <div class="col-lg">
+            <h2>
+                {% trans "Latest Stories" %}
+            </h2>
+            <div>
+                <ul class="nav nav-pills topic-nav">
+                    {% for t in view.topics %}
+                        <li class="nav-item me-1">
+                            <a class="nav-link {% if t == view.topic %}active{% endif %}"
+                               href="{{ t.get_absolute_url }}">{{ t }} ({{ t.items }})</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            {% include "statements/_statements.html" with statements=object_list with_author=1 %}
         </div>
 
     </div>
+
 {% endblock %}
+
 

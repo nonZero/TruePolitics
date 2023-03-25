@@ -1,123 +1,53 @@
 {% load static %}
 {% load i18n web %}
-<div class="card mb-2 border-0 statement">
+<div class="card mb-2 statement">
     <div class="card-body pt-1">
-        {% if home_page != 1 %}
-            <div class="d-flex gap-1 text-secondary mb-2 p-0">
-                <a class="text-decoration-none d-inline"
-                   href="#">
-                    {{ o.reviewed_by }}
-                </a>
-                <span>
-                       {{ o.created_at|date:"d בM Y" }}
-                    </span>
-            </div>
-        {% endif %}
-        <div class="row">
-
-            <div class="col d-flex flex-column justify-content-between">
-                <div class="row">
-                    <div class="col-1 text-center">
-                        דרג
-                    </div>
-                    <div class="col-sm-2 col-lg-3 position-relative">
-                        <div class="position-absolute"
-                             style="bottom:0">
-                            {% for t in o.topics.all %}
-                                <a class="badge rounded-pill text-decoration-none text-dark border-dark border fw-normal"
-                                   href="{% url 's:topic' t.pk %}">
-                                    {{ t }}
-                                </a>
-                            {% endfor %}
-                        </div>
-
-                        <img class="img-responsive statement-img"
-                             src="{{ o.img_url }}">
-                    </div>
-
-                    <div class="col-sm">
-                        <div>
-                            {% if with_author %}
-                                <a class="text-decoration-none text-dark"
-                                   href="{{ o.person.get_absolute_url }}">{{ o.person }}</a>:
-                            {% endif %}
-                            <a class="fw-bold text-decoration-none text-dark"
-                               class="mb-2"
-                               href="{% url 's:detail' o.pk %}">
-                                "{{ o.content|linebreaksbr }}"
-                            </a>
-                            <div>
-                                <a href="https://twitter.com/intent/tweet?text={{ o.content }}"
-                                   target="_blank"
-                                   class="text-decoration-none">
-                                    <img class="card-logo"
-                                         src="{% static 'images/twitter-logo.webp' %}"
-                                         alt="">
-                                </a>
-                                {{ o.date }}
-                            </div>
-                        </div>
-
-                        <div>
-                            <span>{% trans "Review" %}:</span>
-                            <strong>
-                                {{ o.review }}
-                            </strong>
-                            <div>
-                                <a href="#"
-                                   class="d-flex justify-content-center align-items-center">
-                                    <img class="card-logo"
-                                         src="{% static 'images/globes-logo.png' %}"
-                                         alt="">
-                                </a>
-                                <span>
-                                 {{ o.review_date }}
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <a href="https://twitter.com/intent/tweet?text={{ o.content }}"
-                           target="_blank"
-                           class="text-decoration-none">
-                            <img class="card-logo"
-                                 src="{% static 'images/twitter-logo.webp' %}"
-                                 alt="">
-                        </a>
-                        <a href="https://wa.me/?text={{ o.content }}"
-                           target="_blank"
-                           class="text-decoration-none">
-                            <img class="card-logo"
-                                 src="{% static 'images/whatsapp-logo.png' %}"
-                                 alt="">
-                        </a>
-
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
-                           target="_blank"
-                           class="text-decoration-none">
-                            <img class="card-logo"
-                                 src="{% static 'images/facebook-logo.png' %}"
-                                 alt="">
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            {% if show_resources %}
-                <hr>
-                {% for r in o.resources.all %}
-                    <a href="{{ r.url }}"
-                       target="_blank">
-                        {{ r.content|default:r.url }}
-                    </a>
-                    <br>
-                {% endfor %}
+        <p class="lead">
+            {% if with_author %}
+                <a class="text-decoration-none text-dark"
+                   href="{{ o.person.get_absolute_url }}">{{ o.person }}</a>:
             {% endif %}
+            <a class="fw-bold text-decoration-none text-dark"
+               class="mb-2"
+               href="{% url 's:detail' o.pk %}">
+                {{ o.content|linebreaksbr }}
+            </a>
+            <br>
+            <span>{% trans "Review" %}:</span>
+            <span class="fw-bold">
+                {{ o.review|linebreaksbr }}
+            </span>
+        </p>
+
+        <div class="">
+            {% translate "Source" %}:
+            <a class="text-decoration-none"
+               href="{{ o.review_url }}">
+                {{ o.reviewed_by }},
+                <span>
+                       {{ o.review_date|date:"D בN Y" }}
+                </span>
+            </a>
+            |
+            {% for t in o.topics.all %}
+                <a class="text-decoration-none"
+                   href="{% url 's:topic' t.pk %}">
+                    {{ t }}
+                </a>
+            {% endfor %}
         </div>
+
+
+        {% if show_resources %}
+            <hr>
+            {% for r in o.resources.all %}
+                <a href="{{ r.url }}"
+                   target="_blank">
+                    {{ r.content|default:r.url }}
+                </a>
+                <br>
+            {% endfor %}
+        {% endif %}
 
 
     </div>
