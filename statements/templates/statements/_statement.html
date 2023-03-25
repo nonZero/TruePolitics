@@ -23,10 +23,11 @@
             {% translate "Source" %}:
             <a class="text-decoration-none"
                href="{{ o.review_url }}">
-                {{ o.reviewed_by }},
-                <span>
-                       {{ o.review_date|date:"D בN Y" }}
-                </span>
+                {{ o.reviewed_by }}{% if o.review_date %},
+                    <span>
+                       {{ o.review_date|date:"j בF Y" }}
+                    </span>
+                {% endif %}
             </a>
             |
             {% for t in o.topics.all %}
@@ -40,13 +41,26 @@
 
         {% if show_resources %}
             <hr>
-            {% for r in o.resources.all %}
-                <a href="{{ r.url }}"
-                   target="_blank">
-                    {{ r.content|default:r.url }}
-                </a>
-                <br>
-            {% endfor %}
+            <h2>
+                {% translate "Resources" %}
+            </h2>
+            <ul>
+                <li>
+                    {% translate "Review" %} - {{ o.reviewed_by }}:
+                    <a class="text-decoration-none"
+                       href="{{ o.review_url }}">
+                        {{ o.review_url }}
+                    </a>
+                </li>
+                {% for r in o.resources.all %}
+                    <li>
+                        <a href="{{ r.url }}"
+                           target="_blank">
+                            {{ r.content|default:r.url }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
         {% endif %}
 
 

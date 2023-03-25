@@ -7,11 +7,14 @@ from . import models
 
 
 class StatementListView(ListView):
-    title = _("Home Page")
-    paginate_by = 20
+    title = _("All Statements")
+    is_home = True
 
     def get_queryset(self):
-        return models.Statement.objects.reviewed()
+        return models.Statement.objects.reviewed().order_by("-created_at")
+
+    def total(self):
+        return models.Statement.objects.reviewed().count()
 
     def people(self):
         return models.Person.objects.annotate(
@@ -27,14 +30,9 @@ class StatementListView(ListView):
         return models.Statement.objects.reviewed()[:5]
 
 
-class StatementDetailView(DetailView):
-    model = models.Statement
-
-    def get_statements(self):
-        return models.Statement.objects.reviewed()
-
-
 class PersonDetailView(StatementListView):
+    is_home = False
+
     def get(self, request, *args, **kwargs):
         self.person = get_object_or_404(models.Person, pk=self.kwargs["pk"])
         return super().get(request, *args, **kwargs)
@@ -47,6 +45,8 @@ class PersonDetailView(StatementListView):
 
 
 class TopicDetailView(StatementListView):
+    is_home = False
+
     def get(self, request, *args, **kwargs):
         self.topic = get_object_or_404(models.Topic, pk=self.kwargs["pk"])
         return super().get(request, *args, **kwargs)
@@ -58,21 +58,8 @@ class TopicDetailView(StatementListView):
         return super().get_queryset().filter(topics=self.topic)
 
 
-class PersonTopicDetailView(PersonDetailView):
+class StatementDetailView(DetailView):
+    model = models.Statement
+
     def get_statements(self):
-        return super().get_statements().filter(topics=self.topic)
-
-    def get(self, request, *args, **kwargs):
-        self.topic = get_object_or_404(models.Topic, pk=self.kwargs["topic_pk"])
-
-        return super().get(request, *args, **kwargs)
-
-
-class TopicPersonDetailView(TopicDetailView):
-    def get_statements(self):
-        return super().get_statements().filter(person=self.person)
-
-    def get(self, request, *args, **kwargs):
-        self.person = get_object_or_404(models.Person, pk=self.kwargs["person_pk"])
-
-        return super().get(request, *args, **kwargs)
+        return models.Statement.objects.reviewed()
