@@ -2,7 +2,7 @@
 {% load web i18n %}
 {% block content %}
     <div class="row">
-        <div class="col-lg-2">
+        <div id="sidebar" class="collapse col-md-3 col-xl-2 collapse d-md-block">
             <div class="list-group mt-2">
                 <a class="list-group-item list-group-item-action {% if view.is_home %}active{% endif %}"
                    href="{% url "s:list" %}">
@@ -28,7 +28,7 @@
                 {% endfor %}
             </div>
 
-            <div class="d-grid mt-2">
+            <div class="d-none d-md-grid mt-2">
                 <a class="btn btn-light btn-block"
                    href="{% url "s:export" %}">
                     {% trans "JSON" %}
@@ -36,7 +36,7 @@
             </div>
 
         </div>
-        <div class="col-lg-10">
+        <div class="col-md-9 col-xl-10">
             {% block main %}
                 <h1>
                     {{ view.title }}
@@ -45,8 +45,15 @@
                 {% include "statements/_statements.html" with statements=object_list with_author=1 %}
             {% endblock %}
         </div>
-
     </div>
+
+    <div class="d-grid d-md-none mt-2">
+        <a class="btn btn-light btn-block"
+           href="{% url "s:export" %}">
+            {% trans "JSON" %}
+        </a>
+    </div>
+
 
 {% endblock %}
 
