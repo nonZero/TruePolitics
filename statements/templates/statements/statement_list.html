@@ -37,11 +37,13 @@
 
         </div>
         <div class="col-lg-10">
-            <h1>
-                {{ view.title }}
-                <small>({{ object_list.count }})</small>
-            </h1>
-            {% include "statements/_statements.html" with statements=object_list with_author=1 %}
+            {% block main %}
+                <h1>
+                    {{ view.title }}
+                    <small>({{ object_list.count }})</small>
+                </h1>
+                {% include "statements/_statements.html" with statements=object_list with_author=1 %}
+            {% endblock %}
         </div>
 
     </div>

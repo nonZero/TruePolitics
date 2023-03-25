@@ -66,23 +66,12 @@ class Command(BaseCommand):
                     review=row.review,
                     review_url=row.review_url,
                     date=row.date or None,
+                    url=row.resource_url or None,
                     review_date=row.review_date or None,
                     reviewed_by=random.choice(REVIEWERS),
                     img_url=faker.image_url(400, 300),
                 )
-                print(row.topic.strip())
                 s.topics.add(Topic.objects.get(title=row.topic.strip()))
-                if "twitter" in row.resource_url:
-                    rt = Resource.ResourceType.TWEET
-                else:
-                    rt = Resource.ResourceType.OTHER
-
-                s.resources.create(
-                    type=rt,
-                    url=row.resource_url,
-                    # content=faker.paragraph(),
-                    timestamp=row.date,
-                )
             except Exception as e:
                 print(row)
                 print(e)

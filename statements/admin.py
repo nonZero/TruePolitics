@@ -7,16 +7,8 @@ admin.site.register(models.Topic)
 admin.site.register(models.Person)
 
 
-class ResourceInline(admin.StackedInline):
-    model = models.Resource
-    extra = 0
-
-
 @admin.register(models.Statement)
 class StatementAdmin(admin.ModelAdmin):
-    inlines = [
-        ResourceInline,
-    ]
     list_display = (
         "person",
         "content",

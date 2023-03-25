@@ -1,77 +1,50 @@
 {% load static %}
 {% load i18n web %}
-<div class="card mb-2 statement">
-    <div class="card-body pt-1">
-        <p class="lead">
-            {% if with_author %}
-                <a class="text-decoration-none text-dark"
-                   href="{{ o.person.get_absolute_url }}">{{ o.person }}</a>:
-            {% endif %}
-            <a class="fw-bold text-decoration-none text-dark"
-               class="mb-2"
-               href="{% url 's:detail' o.pk %}">
-                {{ o.content|linebreaksbr }}
-            </a>
-            {% if o.date %} &nbsp;<em class="small ">({{ o.date|date:"j בF Y" }})</em>{% endif %}
-            <br>
-            <span>{% trans "Review" %}:</span>
-            <span class="fw-bold">
+<p class="lead">
+    {% if with_author %}
+        <a class="text-decoration-none text-dark"
+           href="{{ o.person.get_absolute_url }}">{{ o.person }}</a>:
+    {% endif %}
+    <a class="fw-bold text-decoration-none text-dark"
+       class="mb-2"
+       href="{% url 's:detail' o.pk %}">
+        {{ o.content|linebreaksbr }}
+    </a>
+    {% if o.date %} &nbsp;<em class="small ">({{ o.date|date:"j בF Y" }})</em>{% endif %}
+    <br>
+    <span>{% trans "Review" %}:</span>
+    <span class="fw-bold">
                 {{ o.review|linebreaksbr }}
             </span>
-        </p>
+</p>
 
-        <div class="">
-            {% translate "Source" %}:
-            {% if o.review_url %}
-                <a class="text-decoration-none"
-                   href="{{ o.review_url }}">
-                    {{ o.reviewed_by }}{% if o.review_date %},
-                        <span>
+<div class="">
+    {% translate "Source" %}:
+    {% if o.review_url %}
+        <a class="text-decoration-none"
+           href="{{ o.review_url }}">
+            {{ o.reviewed_by }}{% if o.review_date %},
+                <span>
                        {{ o.review_date|date:"j בF Y" }}
                     </span>
-                    {% endif %}
-                </a>
-            {% else %}
-                {{ o.reviewed_by }}{% if o.review_date %},
-                    <span>
-                       {{ o.review_date|date:"j בF Y" }}
-                    </span>
-                {% endif %}
             {% endif %}
-            |
-            {% for t in o.topics.all %}
-                <a class="text-decoration-none"
-                   href="{% url 's:topic' t.pk %}">
-                    {{ t }}
-                </a>
-            {% endfor %}
-        </div>
-
-
-        {% if show_resources %}
-            <hr>
-            <h2>
-                {% translate "Resources" %}
-            </h2>
-            <ul>
-                <li>
-                    {% translate "Review" %} - {{ o.reviewed_by }}:
-                    <a class="text-decoration-none"
-                       href="{{ o.review_url }}">
-                        {{ o.review_url }}
-                    </a>
-                </li>
-                {% for r in o.resources.all %}
-                    <li>
-                        <a href="{{ r.url }}"
-                           target="_blank">
-                            {{ r.content|default:r.url }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+        </a>
+    {% else %}
+        {{ o.reviewed_by }}{% if o.review_date %},
+            <span>
+                       {{ o.review_date|date:"j בF Y" }}
+                    </span>
         {% endif %}
-
-
-    </div>
+    {% endif %}
+    |
+    {% for t in o.topics.all %}
+        <a class="text-decoration-none"
+           href="{% url 's:topic' t.pk %}">
+            {{ t }}
+        </a>
+    {% endfor %}
 </div>
+
+
+
+

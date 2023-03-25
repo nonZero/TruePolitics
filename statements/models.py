@@ -72,29 +72,47 @@ class Statement(models.Model):
         ORANGE = 2, _("Half True")
         RED = 3, _("False")
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     person = models.ForeignKey(
         Person, models.PROTECT, related_name="statements", verbose_name=_("person")
     )
+    content = models.TextField(_("statement content"))
+    date = models.DateField(_("date said"))
+    url = models.URLField(_("statement url"), null=True, blank=True)
+
+    reviewed_by = models.CharField(
+        _("reviewed by"), max_length=200, blank=True, null=True
+    )
+    review = models.TextField(blank=True, null=True, verbose_name=_("review summary"))
+    review_url = models.URLField(_("review url"), max_length=3000, null=True)
+    review_date = models.DateField(_("review date"), null=True, blank=True)
+    img_url = models.URLField(
+        max_length=3000,
+        verbose_name=_("image url"),
+        blank=True,
+        null=True,
+    )
+
     topics = models.ManyToManyField(
         Topic, blank=True, related_name="statements", verbose_name=_("topics")
     )
-    date = models.DateField(_("date"))
-    content = models.TextField(_("content"))
+
     rating = models.IntegerField(
         choices=Rating.choices,
         null=True,
         verbose_name=_("rating"),
         blank=True,
     )
-    review = models.TextField(blank=True, null=True, verbose_name=_("review"))
-    review_url = models.URLField(_("review url"), max_length=3000, null=True)
-    review_date = models.DateField(_("review date"), null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    reviewed_by = models.CharField(
-        _("reviewed_by"), max_length=200, blank=True, null=True
+
+    detailed_content = models.TextField(
+        _("detailed content"),
+        help_text=_("detailed article about this item"),
+        blank=True,
+        null=True,
     )
-    img_url = models.URLField(null=True, max_length=3000)
+
     objects = StatementQuerySet.as_manager()
 
     class Meta:
@@ -103,31 +121,3 @@ class Statement(models.Model):
 
     def __str__(self):
         return f'"{self.content}" by {self.person}'
-
-
-class Resource(models.Model):
-    class ResourceType(models.IntegerChoices):
-        OTHER = 1, _("Other")
-        TWEET = 10, _("Tweet")
-        HAARETZ = 11, _("Haaretz")
-        YNET = 12, _("YNet")
-
-    # uid = models.CharField(...)
-    # type = twit, web arcitle, facebook post
-    statement = models.ForeignKey(
-        Statement, models.PROTECT, blank=True, related_name="resources"
-    )
-    url = models.URLField(max_length=3000)
-    timestamp = models.DateTimeField()
-    type = models.IntegerField(choices=ResourceType.choices, default=ResourceType.TWEET)
-    content = models.TextField()
-    note = models.TextField(blank=True)
-
-    class Meta:
-        unique_together = (
-            "statement",
-            "url",
-        )
-
-    def __str__(self):
-        return self.content

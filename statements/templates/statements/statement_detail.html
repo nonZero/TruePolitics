@@ -1,12 +1,40 @@
-{% extends "base.html" %}
+{% extends "statements/statement_list.html" %}
 {% load web i18n %}
-{% block content %}
-    <div class="row justify-content-center">
-        <div class="col-md-9">
-            <div class="row">
-                {% include "statements/_statement.html" with o=object with_author=1 show_resources=1 %}
-            </div>
-        </div>
-    </div>
+{% block main %}
+    {% with o=object %}
+        <div class="mx-lg-5 my-lg-5 p-3 p-lg-5 border">
+        {% include "statements/_statement.html" with with_author=1 %}
+        <hr>
+        {% if o.detailed_content %}
+            {{ o.detailed_content|linebreaks }}
+            <hr>
+        {% endif %}
+        <h2>
+            {% translate "Resources" %}
+        </h2>
+        <ul>
+            {% if o.url %}
+                <li>
+                    {% translate "Original statement" %}:&nbsp;
+                    <a class="text-decoration-none"
+                       href="{{ o.url }}">
+                        {{ o.url }}
+                    </a>
+                </li>
+            {% endif %}
+            {% if o.review_url %}
+                <li>
+                    {% translate "Review" %} - {{ o.reviewed_by }}:
+                    <a class="text-decoration-none"
+                       href="{{ o.review_url }}">
+                        {{ o.review_url }}
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    {% endwith %}
+
+</div>
 {% endblock %}
+
 
