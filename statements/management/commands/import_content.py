@@ -1,6 +1,4 @@
-import json
 import random
-from pprint import pp
 
 import pandas as pd
 import tqdm
@@ -8,13 +6,12 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 from faker import Faker
 
-from statements.models import Person, Topic, Statement, Resource
+from statements.models import Person, Topic, Statement
 
 REVIEWERS = """
 בן כספית
 גיא זוהר
 """.strip().splitlines()
-
 
 COLS = """
 topic,נושא
@@ -49,7 +46,6 @@ class Command(BaseCommand):
         # df = df[df.review != ""]
         # df = df.iloc[:16]
 
-        Resource.objects.all().delete()
         Statement.objects.all().delete()
 
         faker = Faker("he")
