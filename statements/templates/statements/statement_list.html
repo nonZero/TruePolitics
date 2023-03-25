@@ -27,10 +27,19 @@
                     </a>
                 {% endfor %}
             </div>
+
+            <div class="d-grid mt-2">
+                <a class="btn btn-light btn-block"
+                   href="{% url "s:export" %}">
+                    {% trans "JSON" %}
+                </a>
+            </div>
+
         </div>
         <div class="col-lg-10">
             <h1>
                 {{ view.title }}
+                <small>({{ object_list.count }})</small>
             </h1>
             {% include "statements/_statements.html" with statements=object_list with_author=1 %}
         </div>

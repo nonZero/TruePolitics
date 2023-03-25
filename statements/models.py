@@ -1,6 +1,14 @@
 from django.db import models
+from django.db.models import Count, Q
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+
+
+class PersonQuerySet(models.QuerySet):
+    def with_reviewed_counts(self):
+        return self.annotate(
+            items=Count("statements__id", filter=Q(statements__review__isnull=False)),
+        ).filter(items__gte=1)
 
 
 class Person(models.Model):
@@ -9,14 +17,13 @@ class Person(models.Model):
     title = models.CharField(_("title"), max_length=200, blank=True, null=True)
     img_url = models.URLField(_("image url"), max_length=3000, null=True)
 
+    objects = PersonQuerySet.as_manager()
+
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse("s:person", kwargs={"pk": self.pk})
-
-    def get_topic_statements_count(self, topic):
-        return self.statements.filter(topic=topic, review__isnull=False).count()
 
     class Meta:
         verbose_name = _("person")
@@ -30,9 +37,18 @@ class Person(models.Model):
         )
 
 
+class TopicQuerySet(models.QuerySet):
+    def with_reviewed_counts(self):
+        return self.annotate(
+            items=Count("statements__id", filter=Q(statements__review__isnull=False)),
+        ).filter(items__gte=1)
+
+
 class Topic(models.Model):
     title = models.CharField(_("title"), max_length=250, unique=True)
     description = models.TextField(_("description"), blank=True)
+
+    objects = TopicQuerySet.as_manager()
 
     class Meta:
         verbose_name = _("topic")

@@ -1,9 +1,11 @@
-from django.db.models import Count, Q, F
+from django.db.models import Count, Q
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
+from django.views import View
 from django.views.generic import ListView, DetailView
 
-from . import models
+from . import models, serializers
 
 
 class StatementListView(ListView):
@@ -17,17 +19,10 @@ class StatementListView(ListView):
         return models.Statement.objects.reviewed().count()
 
     def people(self):
-        return models.Person.objects.annotate(
-            items=Count("statements__id", filter=Q(statements__review__isnull=False)),
-        ).filter(items__gte=1)
+        return models.Person.objects.with_reviewed_counts()
 
     def topics(self):
-        return models.Topic.objects.annotate(
-            items=Count("statements__id", filter=Q(statements__review__isnull=False)),
-        ).filter(items__gte=1)
-
-    def get_statements(self):
-        return models.Statement.objects.reviewed()[:5]
+        return models.Topic.objects.with_reviewed_counts()
 
 
 class PersonDetailView(StatementListView):
@@ -61,5 +56,19 @@ class TopicDetailView(StatementListView):
 class StatementDetailView(DetailView):
     model = models.Statement
 
-    def get_statements(self):
-        return models.Statement.objects.reviewed()
+
+class StatementExportView(View):
+    def get(self, request, *args, **kwargs):
+        d = {
+            "items": serializers.StatementSerializer(
+                models.Statement.objects.reviewed().order_by("-created_at"),
+                many=True,
+            ).data,
+            "people": serializers.PersonSerializer(
+                models.Person.objects.with_reviewed_counts(), many=True
+            ).data,
+            "topics": serializers.TopicSerializer(
+                models.Topic.objects.with_reviewed_counts(), many=True
+            ).data,
+        }
+        return JsonResponse(d, json_dumps_params={"ensure_ascii": False})

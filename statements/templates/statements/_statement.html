@@ -21,14 +21,22 @@
 
         <div class="">
             {% translate "Source" %}:
-            <a class="text-decoration-none"
-               href="{{ o.review_url }}">
+            {% if o.review_url %}
+                <a class="text-decoration-none"
+                   href="{{ o.review_url }}">
+                    {{ o.reviewed_by }}{% if o.review_date %},
+                        <span>
+                       {{ o.review_date|date:"j בF Y" }}
+                    </span>
+                    {% endif %}
+                </a>
+            {% else %}
                 {{ o.reviewed_by }}{% if o.review_date %},
                     <span>
                        {{ o.review_date|date:"j בF Y" }}
                     </span>
                 {% endif %}
-            </a>
+            {% endif %}
             |
             {% for t in o.topics.all %}
                 <a class="text-decoration-none"

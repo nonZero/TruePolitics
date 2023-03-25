@@ -9,4 +9,5 @@ urlpatterns = [
     path("p/<int:pk>/", views.PersonDetailView.as_view(), name="person"),
     path("t/<int:pk>/", views.TopicDetailView.as_view(), name="topic"),
     path("s/<int:pk>/", views.StatementDetailView.as_view(), name="detail"),
+    path("s/json/", views.StatementExportView.as_view(), name="export"),
 ]
