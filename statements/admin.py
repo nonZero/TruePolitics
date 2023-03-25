@@ -14,9 +14,9 @@ class StatementAdmin(admin.ModelAdmin):
         "content",
         "date",
         "get_topics",
-        "rating",
+        "type",
     )
-    list_filter = ("topics",)
+    list_filter = ("topics", "person")
     date_hierarchy = "date"
     search_fields = ("content", "person__name")
 

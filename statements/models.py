@@ -67,10 +67,9 @@ class StatementQuerySet(models.QuerySet):
 
 
 class Statement(models.Model):
-    class Rating(models.IntegerChoices):
-        GREEN = 1, _("True")
-        ORANGE = 2, _("Half True")
-        RED = 3, _("False")
+    class StatementType(models.IntegerChoices):
+        PROMISE = 1, _("promise")
+        CLAIM = 2, _("claim")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -80,7 +79,7 @@ class Statement(models.Model):
     )
     content = models.TextField(_("statement content"))
     date = models.DateField(_("date said"))
-    url = models.URLField(_("statement url"), null=True, blank=True)
+    url = models.URLField(_("statement url"), null=True, blank=True, max_length=3000)
 
     reviewed_by = models.CharField(
         _("reviewed by"), max_length=200, blank=True, null=True
@@ -99,16 +98,16 @@ class Statement(models.Model):
         Topic, blank=True, related_name="statements", verbose_name=_("topics")
     )
 
-    rating = models.IntegerField(
-        choices=Rating.choices,
+    type = models.IntegerField(
+        choices=StatementType.choices,
         null=True,
-        verbose_name=_("rating"),
         blank=True,
+        verbose_name=_("statement type"),
     )
 
-    detailed_content = models.TextField(
-        _("detailed content"),
-        help_text=_("detailed article about this item"),
+    editing_notes = models.TextField(
+        _("editing notes"),
+        help_text=_("internal use only"),
         blank=True,
         null=True,
     )

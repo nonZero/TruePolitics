@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-25 10:25+0300\n"
-"PO-Revision-Date: 2023-03-25 10:25+0300\n"
+"POT-Creation-Date: 2023-03-25 11:56+0300\n"
+"PO-Revision-Date: 2023-03-25 11:56+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: statements/admin.py:26 statements/models.py:55 statements/models.py:99
+#: statements/admin.py:26 statements/models.py:55 statements/models.py:98
 msgid "topics"
 msgstr "נושאים"
 
@@ -29,17 +29,17 @@ msgstr "שם"
 
 #: statements/models.py:16
 msgid "affiliation"
-msgstr "שיוך"
+msgstr "מפלגה"
 
 #: statements/models.py:17 statements/models.py:48
 msgid "title"
 msgstr "כותרת"
 
-#: statements/models.py:18 statements/models.py:93
+#: statements/models.py:18 statements/models.py:92
 msgid "image url"
 msgstr "תמונה"
 
-#: statements/models.py:29 statements/models.py:79
+#: statements/models.py:29 statements/models.py:78
 msgid "person"
 msgstr "אישיות"
 
@@ -56,68 +56,62 @@ msgid "topic"
 msgstr "נושא"
 
 #: statements/models.py:71
-msgid "True"
-msgstr "אמת"
+msgid "promise"
+msgstr "הבטחה"
 
 #: statements/models.py:72
-msgid "Half True"
-msgstr "ככה ככה"
+msgid "claim"
+msgstr "טענה"
 
-#: statements/models.py:73
-msgid "False"
-msgstr "שקר"
-
-#: statements/models.py:81
+#: statements/models.py:80
 msgid "statement content"
 msgstr "תוכן האמירה"
 
-#: statements/models.py:82
+#: statements/models.py:81
 msgid "date said"
 msgstr "תאריך האמירה"
 
-#: statements/models.py:83
+#: statements/models.py:82
 msgid "statement url"
 msgstr "קישור למקור האמירה"
 
-#: statements/models.py:86
+#: statements/models.py:85
 msgid "reviewed by"
 msgstr "כותב/מקור ההפרכה"
 
-#: statements/models.py:88
+#: statements/models.py:87
 msgid "review summary"
 msgstr "תקציר ההפרכה"
 
-#: statements/models.py:89
+#: statements/models.py:88
 msgid "review url"
-msgstr "קישור לביקורת"
+msgstr "קישור להפרכה"
 
-#: statements/models.py:90
+#: statements/models.py:89
 msgid "review date"
-msgstr "תאריך הביקורת"
+msgstr "תאריך ההפרכה"
 
 #: statements/models.py:105
-msgid "rating"
-msgstr "דירוג"
+msgid "statement type"
+msgstr "סוג אמירה"
+
+#: statements/models.py:109
+msgid "editing notes"
+msgstr "הערות עריכה"
 
 #: statements/models.py:110
-msgid "detailed content"
-msgstr "תוכן נוסף"
+msgid "internal use only"
+msgstr "לשימוש פנימי בלבד"
 
-#: statements/models.py:111
-msgid "detailed article about this item"
-msgstr ""
-"כאן ניתן לכתוב תוכן ארוך נוסף לגבי אמירה והפרכה זו (בלוג פוסט שלם) שיופיע "
-"בדף ההפרכה באתר"
-
-#: statements/models.py:119
+#: statements/models.py:118
 msgid "statement"
 msgstr "אמירה"
 
-#: statements/models.py:120
+#: statements/models.py:119
 msgid "statements"
 msgstr "אמירות"
 
-#: statements/templates/base.html:15
+#: statements/templates/base.html:16
 msgid "True Politics"
 msgstr "True Politics"
 
@@ -147,12 +141,33 @@ msgid "All Statements"
 msgstr "כל ההפרכות"
 
 #: statements/templates/statements/statement_list.html:34
+#: statements/templates/statements/statement_list.html:53
 msgid "JSON"
 msgstr ""
 
 #: statements/templatetags/web.py:51
 msgid ", "
 msgstr ""
+
+#~ msgid "True"
+#~ msgstr "אמת"
+
+#~ msgid "Half True"
+#~ msgstr "ככה ככה"
+
+#~ msgid "False"
+#~ msgstr "שקר"
+
+#~ msgid "rating"
+#~ msgstr "דירוג"
+
+#~ msgid "detailed content"
+#~ msgstr "תוכן נוסף"
+
+#~ msgid "detailed article about this item"
+#~ msgstr ""
+#~ "כאן ניתן לכתוב תוכן ארוך נוסף לגבי אמירה והפרכה זו (בלוג פוסט שלם) שיופיע "
+#~ "בדף ההפרכה באתר"
 
 #~ msgid "Other"
 #~ msgstr "אחר"
