@@ -12,6 +12,7 @@
                href="{% url 's:detail' o.pk %}">
                 {{ o.content|linebreaksbr }}
             </a>
+            {% if o.date %} &nbsp;<em class="small ">({{ o.date|date:"j בF Y" }})</em>{% endif %}
             <br>
             <span>{% trans "Review" %}:</span>
             <span class="fw-bold">
