@@ -22,7 +22,7 @@
     {% translate "Source" %}:
     {% if o.review_url %}
         <a class="text-decoration-none"
-           href="{{ o.review_url }}">
+           href="{{ o.review_url }}" target="_blank">
             {{ o.reviewed_by }}{% if o.review_date %},
                 <span>
                        {{ o.review_date|date:"j בF Y" }}
