@@ -12,10 +12,10 @@ class BaseMixin:
         return models.Statement.objects.reviewed().count()
 
     def people(self):
-        return models.Person.objects.with_reviewed_counts()
+        return models.Person.objects.with_reviewed_counts().order_by("name")
 
     def topics(self):
-        return models.Topic.objects.with_reviewed_counts()
+        return models.Topic.objects.with_reviewed_counts().order_by("title")
 
 
 class StatementListView(BaseMixin, ListView):
