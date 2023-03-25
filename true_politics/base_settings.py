@@ -28,10 +28,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
+    "corsheaders",
     "statements",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -186,3 +188,5 @@ LOGGING = DEFAULT_LOGGING = {
 
 ADMINS = (("Udi", "udioron@gmail.com"),)
 MANAGERS = ADMINS
+
+CORS_ALLOW_ALL_ORIGINS = True

@@ -362,12 +362,20 @@ dj-database-url==1.2.0 ; python_version >= "3.10" and python_version < "3.11" \
 django-bootstrap5==22.2 ; python_version >= "3.10" and python_version < "3.11" \
     --hash=sha256:5d677bbfb94207c1a034d63a5f39d95ce287ef509e0b31dfb4d233cc81f93bcc \
     --hash=sha256:e944f5ced342e0e16cde77e1ddacb4b9fd5bce4cc190df2f7da0b8e18a24c9cb
+django-cors-headers==3.14.0 ; python_version >= "3.10" and python_version < "3.11" \
+    --hash=sha256:5fbd58a6fb4119d975754b2bc090f35ec160a8373f276612c675b00e8a138739 \
+    --hash=sha256:684180013cc7277bdd8702b80a3c5a4b3fcae4abb2bf134dceb9f5dfe300228e
 django-extensions==3.2.1 ; python_version >= "3.10" and python_version < "3.11" \
     --hash=sha256:2a4f4d757be2563cd1ff7cfdf2e57468f5f931cc88b23cf82ca75717aae504a4 \
     --hash=sha256:421464be390289513f86cb5e18eb43e5dc1de8b4c27ba9faa3b91261b0d67e09
+django-rest-framework==0.1.0 ; python_version >= "3.10" and python_version < "3.11" \
+    --hash=sha256:47a8f496fa69e3b6bd79f68dd7a1527d907d6b77f009e9db7cf9bb21cc565e4a
 django==4.1.7 ; python_version >= "3.10" and python_version < "3.11" \
     --hash=sha256:44f714b81c5f190d9d2ddad01a532fe502fa01c4cb8faf1d081f4264ed15dcd8 \
     --hash=sha256:f2f431e75adc40039ace496ad3b9f17227022e8b11566f4b363da44c7e44761e
+djangorestframework==3.14.0 ; python_version >= "3.10" and python_version < "3.11" \
+    --hash=sha256:579a333e6256b09489cbe0a067e66abe55c6595d8926be6b99423786334350c8 \
+    --hash=sha256:eb63f58c9f218e1a7d064d17a70751f528ed4e1d35547fdade9aaf4cd103fd08
 exceptiongroup==1.1.1 ; python_version >= "3.10" and python_version < "3.11" \
     --hash=sha256:232c37c63e4f682982c8b6459f33a8981039e5fb8756b2074364e5055c498c9e \
     --hash=sha256:d484c3090ba2889ae2928419117447a14daf3c1231d5e30d0aae34f354f01785

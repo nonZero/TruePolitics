@@ -752,6 +752,21 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-cors-headers"
+version = "3.14.0"
+description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "django_cors_headers-3.14.0-py3-none-any.whl", hash = "sha256:684180013cc7277bdd8702b80a3c5a4b3fcae4abb2bf134dceb9f5dfe300228e"},
+    {file = "django_cors_headers-3.14.0.tar.gz", hash = "sha256:5fbd58a6fb4119d975754b2bc090f35ec160a8373f276612c675b00e8a138739"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "django-extensions"
 version = "3.2.1"
 description = "Extensions for Django"
@@ -3394,4 +3409,4 @@ test = ["mypy", "pre-commit", "pytest", "pytest-asyncio", "websockets (>=10.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "~3.10"
-content-hash = "e65816a55e4e41842519598664ba2b7c63c962c4fa1b55a3b7f36134547f1435"
+content-hash = "61d9b85524e01ed547aff5c4f7137d53de6ad1165d68bf6ddbf1e207b2377d16"
