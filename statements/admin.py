@@ -27,10 +27,16 @@ class StatementAdmin(admin.ModelAdmin):
 
 @admin.register(models.Person)
 class PersonAdmin(admin.ModelAdmin):
+    def get_queryset(self, request):
+        return super().get_queryset(request)._with_reviewed_counts().order_by("-items")
+
+    list_per_page = 250
+    list_max_show_all = 1000
     list_display = (
         "name",
         "affiliation",
         "title",
+        "items",
         "has_image",
     )
     list_filter = ("affiliation",)
@@ -39,6 +45,18 @@ class PersonAdmin(admin.ModelAdmin):
         "affiliation",
         "title",
     )
+
+    def items(self, instance):
+        return instance.items
+
+    items.short_description = _("statements")
+    items.admin_order_field = "items"
+
+    def has_image(self, instance: models.Person):
+        return bool(instance.img_url)
+
+    has_image.short_description = _("has image")
+    has_image.boolean = True
 
     def has_image(self, instance: models.Person):
         return bool(instance.img_url)

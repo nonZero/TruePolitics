@@ -5,10 +5,13 @@ from django.utils.translation import gettext_lazy as _
 
 
 class PersonQuerySet(models.QuerySet):
-    def with_reviewed_counts(self):
+    def _with_reviewed_counts(self):
         return self.annotate(
             items=Count("statements__id", filter=Q(statements__review__isnull=False)),
-        ).filter(items__gte=1)
+        )
+
+    def with_reviewed_counts(self):
+        return self._with_reviewed_counts().filter(items__gte=1)
 
 
 class Person(models.Model):

@@ -31,8 +31,8 @@ class Command(BaseCommand):
             Person.objects.update_or_create(
                 name=p["name"],
                 defaults=dict(
-                    affiliation=p["party"],
-                    img_url=p["img_url"],
+                    affiliation=p["party"].strip(),
+                    img_url=p["img_url"].strip(),
                 ),
             )
 
