@@ -1,10 +1,8 @@
 import json
-from collections import Counter
 
 import tqdm
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from faker import Faker
 
 from statements.models import Person, Topic
 
@@ -20,6 +18,7 @@ TOPICS = """
 פוליטי
 פנים
 תחבורה
+תרבות
 """.strip().splitlines()
 
 
