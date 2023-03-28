@@ -55,7 +55,8 @@ class TopicDetailView(StatementListView):
 
 
 class StatementDetailView(BaseMixin, DetailView):
-    model = models.Statement
+    def get_queryset(self):
+        return models.Statement.objects.reviewed()
 
     def title(self):
         return f"{self.object.person.name}: {self.object.content}"

@@ -7,7 +7,13 @@ from django.utils.translation import gettext_lazy as _
 class PersonQuerySet(models.QuerySet):
     def _with_reviewed_counts(self):
         return self.annotate(
-            items=Count("statements__id", filter=Q(statements__review__isnull=False)),
+            items=Count(
+                "statements__id",
+                filter=Q(
+                    statements__status=Statement.Status.PUBLISHED,
+                    statements__review__isnull=False,
+                ),
+            ),
         )
 
     def with_reviewed_counts(self):
@@ -66,7 +72,7 @@ class Topic(models.Model):
 
 class StatementQuerySet(models.QuerySet):
     def reviewed(self):
-        return self.filter(review__isnull=False)
+        return self.filter(status=Statement.Status.PUBLISHED, review__isnull=False)
 
 
 class Statement(models.Model):
@@ -74,8 +80,18 @@ class Statement(models.Model):
         PROMISE = 1, _("promise")
         CLAIM = 2, _("claim")
 
+    class Status(models.IntegerChoices):
+        DRAFT = 1, _("Draft")
+        PUBLISHED = 10, _("Published")
+        DELETED = 200, _("Deleted")
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    status = models.IntegerField(
+        _("publish status"), choices=Status.choices, default=Status.PUBLISHED
+    )
+    published_at = models.DateTimeField(_("published at"), null=True, blank=True)
 
     person = models.ForeignKey(
         Person, models.PROTECT, related_name="statements", verbose_name=_("person")
@@ -123,3 +139,6 @@ class Statement(models.Model):
 
     def __str__(self):
         return f'"{self.content}" by {self.person}'
+
+    def get_absolute_url(self):
+        return reverse("s:detail", kwargs={"pk": self.pk})

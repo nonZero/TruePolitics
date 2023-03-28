@@ -9,13 +9,14 @@ admin.site.register(models.Topic)
 @admin.register(models.Statement)
 class StatementAdmin(admin.ModelAdmin):
     list_display = (
-        "person",
         "content",
+        "person",
+        "status",
         "date",
         "get_topics",
         "type",
     )
-    list_filter = ("topics", "person")
+    list_filter = ("status", "topics", "person")
     date_hierarchy = "date"
     search_fields = ("content", "person__name")
 
