@@ -58,9 +58,3 @@ class PersonAdmin(admin.ModelAdmin):
 
     has_image.short_description = _("has image")
     has_image.boolean = True
-
-    def has_image(self, instance: models.Person):
-        return bool(instance.img_url)
-
-    has_image.short_description = _("has image")
-    has_image.boolean = True
