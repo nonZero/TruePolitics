@@ -93,16 +93,23 @@ class Statement(models.Model):
     )
     published_at = models.DateTimeField(_("published at"), null=True, blank=True)
 
+    reviewed_by = models.CharField(
+        _("reviewed by"), max_length=200, blank=True, null=True
+    )
+
     person = models.ForeignKey(
         Person, models.PROTECT, related_name="statements", verbose_name=_("person")
     )
     content = models.TextField(_("statement content"))
+    type = models.IntegerField(
+        choices=StatementType.choices,
+        null=True,
+        blank=True,
+        verbose_name=_("statement type"),
+    )
     date = models.DateField(_("date said"))
     url = models.URLField(_("statement url"), null=True, blank=True, max_length=3000)
 
-    reviewed_by = models.CharField(
-        _("reviewed by"), max_length=200, blank=True, null=True
-    )
     review = models.TextField(blank=True, null=True, verbose_name=_("review summary"))
     review_url = models.URLField(_("review url"), max_length=3000, null=True)
     review_date = models.DateField(_("review date"), null=True, blank=True)
@@ -115,13 +122,6 @@ class Statement(models.Model):
 
     topics = models.ManyToManyField(
         Topic, blank=True, related_name="statements", verbose_name=_("topics")
-    )
-
-    type = models.IntegerField(
-        choices=StatementType.choices,
-        null=True,
-        blank=True,
-        verbose_name=_("statement type"),
     )
 
     editing_notes = models.TextField(

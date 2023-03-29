@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-28 16:55+0300\n"
-"PO-Revision-Date: 2023-03-28 15:55+0200\n"
+"POT-Creation-Date: 2023-03-29 15:02+0300\n"
+"PO-Revision-Date: 2023-03-29 15:06+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he\n"
@@ -19,15 +19,27 @@ msgstr ""
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: statements/admin.py:26 statements/models.py:64 statements/models.py:117
+#: statements/admin.py:27 statements/models.py:64 statements/models.py:117
 msgid "topics"
 msgstr "נושאים"
 
-#: statements/admin.py:53 statements/models.py:138
+#: statements/admin.py:31
+msgid "published items"
+msgstr "אמירות שאושרו"
+
+#: statements/admin.py:36
+msgid "have published items"
+msgstr "עם אמירות שאושרו"
+
+#: statements/admin.py:37
+msgid "does not have published items"
+msgstr "ללא אמירות שאושרו"
+
+#: statements/admin.py:74 statements/models.py:138
 msgid "statements"
 msgstr "אמירות"
 
-#: statements/admin.py:59 statements/admin.py:65
+#: statements/admin.py:80
 msgid "has image"
 msgstr "יש תמונה"
 
@@ -73,11 +85,11 @@ msgstr "טענה"
 
 #: statements/models.py:84
 msgid "Draft"
-msgstr "טיוטה"
+msgstr "לבדיקה"
 
 #: statements/models.py:85
 msgid "Published"
-msgstr "פורסם באתר"
+msgstr "אושר"
 
 #: statements/models.py:86
 msgid "Deleted"
@@ -105,7 +117,7 @@ msgstr "קישור למקור האמירה"
 
 #: statements/models.py:104
 msgid "reviewed by"
-msgstr "כותב/מקור ההפרכה"
+msgstr "תחקירן"
 
 #: statements/models.py:106
 msgid "review summary"
@@ -121,7 +133,7 @@ msgstr "תאריך ההפרכה"
 
 #: statements/models.py:124
 msgid "statement type"
-msgstr "סוג אמירה"
+msgstr "טענה/הבטחה"
 
 #: statements/models.py:128
 msgid "editing notes"
