@@ -21,7 +21,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
+    "true_politics.apps.CustomAdminConfig",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -93,16 +93,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.1/topics/i18n/
-
 LANGUAGE_CODE = "he"
-
 TIME_ZONE = "Asia/Jerusalem"
-
 USE_I18N = True
-
 USE_TZ = True
+LOCALE_PATHS = [
+    BASE_DIR / "true_politics/locale",
+]
 
 
 # Static files (CSS, JavaScript, Images)

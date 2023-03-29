@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-29 15:02+0300\n"
+"POT-Creation-Date: 2023-03-29 16:36+0300\n"
 "PO-Revision-Date: 2023-03-29 15:06+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -19,161 +19,161 @@ msgstr ""
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: statements/admin.py:27 statements/models.py:64 statements/models.py:117
+#: admin.py:35 models.py:64 models.py:124
 msgid "topics"
 msgstr "נושאים"
 
-#: statements/admin.py:31
+#: admin.py:39
 msgid "published items"
 msgstr "אמירות שאושרו"
 
-#: statements/admin.py:36
+#: admin.py:44
 msgid "have published items"
 msgstr "עם אמירות שאושרו"
 
-#: statements/admin.py:37
+#: admin.py:45
 msgid "does not have published items"
 msgstr "ללא אמירות שאושרו"
 
-#: statements/admin.py:74 statements/models.py:138
+#: admin.py:82 models.py:138
 msgid "statements"
 msgstr "אמירות"
 
-#: statements/admin.py:80
+#: admin.py:88
 msgid "has image"
 msgstr "יש תמונה"
 
-#: statements/models.py:24
+#: models.py:24
 msgid "name"
 msgstr "שם"
 
-#: statements/models.py:25
+#: models.py:25
 msgid "affiliation"
 msgstr "מפלגה"
 
-#: statements/models.py:26 statements/models.py:57
+#: models.py:26 models.py:57
 msgid "title"
 msgstr "כותרת"
 
-#: statements/models.py:27 statements/models.py:111
+#: models.py:27 models.py:118
 msgid "image url"
 msgstr "תמונה"
 
-#: statements/models.py:38 statements/models.py:97
+#: models.py:38 models.py:101
 msgid "person"
 msgstr "אישיות"
 
-#: statements/models.py:39
+#: models.py:39
 msgid "people"
 msgstr "אישים"
 
-#: statements/models.py:58
+#: models.py:58
 msgid "description"
 msgstr "תיאור"
 
-#: statements/models.py:63
+#: models.py:63
 msgid "topic"
 msgstr "נושא"
 
-#: statements/models.py:80
+#: models.py:80
 msgid "promise"
 msgstr "הבטחה"
 
-#: statements/models.py:81
+#: models.py:81
 msgid "claim"
 msgstr "טענה"
 
-#: statements/models.py:84
+#: models.py:84
 msgid "Draft"
 msgstr "לבדיקה"
 
-#: statements/models.py:85
+#: models.py:85
 msgid "Published"
 msgstr "אושר"
 
-#: statements/models.py:86
+#: models.py:86
 msgid "Deleted"
 msgstr "נמחק"
 
-#: statements/models.py:92
+#: models.py:92
 msgid "publish status"
 msgstr "סטטוס פרסום"
 
-#: statements/models.py:94
+#: models.py:94
 msgid "published at"
 msgstr "מועד פירסום"
 
-#: statements/models.py:99
-msgid "statement content"
-msgstr "תוכן האמירה"
-
-#: statements/models.py:100
-msgid "date said"
-msgstr "תאריך האמירה"
-
-#: statements/models.py:101
-msgid "statement url"
-msgstr "קישור למקור האמירה"
-
-#: statements/models.py:104
+#: models.py:97
 msgid "reviewed by"
 msgstr "תחקירן"
 
-#: statements/models.py:106
-msgid "review summary"
-msgstr "תקציר ההפרכה"
+#: models.py:103
+msgid "statement content"
+msgstr "תוכן האמירה"
 
-#: statements/models.py:107
-msgid "review url"
-msgstr "קישור להפרכה"
-
-#: statements/models.py:108
-msgid "review date"
-msgstr "תאריך ההפרכה"
-
-#: statements/models.py:124
+#: models.py:108
 msgid "statement type"
 msgstr "טענה/הבטחה"
 
-#: statements/models.py:128
+#: models.py:110
+msgid "date said"
+msgstr "תאריך האמירה"
+
+#: models.py:111
+msgid "statement url"
+msgstr "קישור למקור האמירה"
+
+#: models.py:113
+msgid "review summary"
+msgstr "תקציר ההפרכה"
+
+#: models.py:114
+msgid "review url"
+msgstr "קישור להפרכה"
+
+#: models.py:115
+msgid "review date"
+msgstr "תאריך ההפרכה"
+
+#: models.py:128
 msgid "editing notes"
 msgstr "הערות עריכה"
 
-#: statements/models.py:129
+#: models.py:129
 msgid "internal use only"
 msgstr "לשימוש פנימי בלבד"
 
-#: statements/models.py:137
+#: models.py:137
 msgid "statement"
 msgstr "אמירה"
 
-#: statements/templates/statements/_statement.html:15
-#: statements/templates/statements/statement_detail.html:33
+#: templates/statements/_statement.html:15
+#: templates/statements/statement_detail.html:33
 msgid "Review"
 msgstr "הפרכה"
 
-#: statements/templates/statements/_statement.html:22
+#: templates/statements/_statement.html:22
 msgid "Source"
 msgstr "מקור"
 
-#: statements/templates/statements/statement_detail.html:16
+#: templates/statements/statement_detail.html:16
 msgid "Resources"
 msgstr "מקורות"
 
-#: statements/templates/statements/statement_detail.html:24
+#: templates/statements/statement_detail.html:24
 msgid "Original statement"
 msgstr "אמירה מקורית"
 
-#: statements/templates/statements/statement_list.html:9 statements/views.py:22
+#: templates/statements/statement_list.html:9 views.py:22
 msgid "All Statements"
 msgstr "כל ההפרכות"
 
-#: statements/templates/statements/statement_list.html:34
-#: statements/templates/statements/statement_list.html:53
+#: templates/statements/statement_list.html:34
+#: templates/statements/statement_list.html:53
 msgid "JSON"
 msgstr ""
 
-#: statements/templatetags/web.py:51
+#: templatetags/web.py:51
 msgid ", "
 msgstr ""
 
