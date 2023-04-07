@@ -4,35 +4,23 @@ import json
 import tqdm
 import tweepy
 from tweepy import Tweet
+from pprint import pp
 
-import my_secrets
+import my_secrets # Add your Twitter API key here
 
 client = tweepy.Client(my_secrets.BEARER_TOKEN)
 
 
-user_id = 1552075163545608198
+user_id = 1552409123425337346 # Change to desired user ID
 
-response = client.get_users_tweets(
-    user_id,
-    tweet_fields=("created_at",),
-)
-
-# for i, tweet in enumerate(response.data):  # type: int, Tweet
-#     print(type(tweet))
-#     print(tweet.data)
-#     print(tweet.text)
-#     print(tweet.date)
-#     print(tweet.time)
-
-
-with open("gold.jsonl", "a") as f:
+with open("output.jsonl", "a") as f:
     for tweet in tqdm.tqdm(
         tweepy.Paginator(
             client.get_users_tweets,
             user_id,
-            # end_time=datetime.datetime(2021, 4, 9, 0, 0),
             max_results=100,
-            tweet_fields=("created_at",),
+            tweet_fields="created_at,source",
+            expansions="referenced_tweets.id",
         ).flatten(limit=25_000)
     ):
         f.write(
