@@ -2,3 +2,4 @@
 /.idea/
 *.pyc
 /true_politics/local_settings.py
+my_secrets.py
