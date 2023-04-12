@@ -83,6 +83,7 @@ class Statement(models.Model):
     class Status(models.IntegerChoices):
         DRAFT = 1, _("Draft")
         PUBLISHED = 10, _("Published")
+        MEDIA = 20, _("Media")
         DELETED = 200, _("Deleted")
 
     created_at = models.DateTimeField(auto_now_add=True)
