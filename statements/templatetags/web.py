@@ -27,7 +27,7 @@ def dt(value, default=""):
 
 
 @register.filter
-def u(instance, title_attr="__str__", blank=False):
+def u(instance, title_attr="__str__", blank=True):
     esc = conditional_escape
 
     s = getattr(instance, title_attr)

@@ -3,11 +3,13 @@
 <p class="lead">
     {% if with_author %}
         <a class="text-decoration-none text-dark"
-           href="{{ o.person.get_absolute_url }}">{{ o.person }}</a>:
+           href="{{ o.person.get_absolute_url }}"
+           target="_blank">{{ o.person }}</a>:
     {% endif %}
     <a class="fw-bold text-decoration-none text-dark"
        class="mb-2"
-       href="{% url 's:detail' o.pk %}">
+       href="{% url 's:detail' o.pk %}"
+       target="_blank">
         {{ o.content|linebreaksbr }}
     </a>
     {% if o.date %} &nbsp;<em class="small ">({{ o.date|date:"j בF Y" }})</em>{% endif %}
@@ -39,7 +41,8 @@
     |
     {% for t in o.topics.all %}
         <a class="text-decoration-none"
-           href="{% url 's:topic' t.pk %}">
+           href="{% url 's:topic' t.pk %}"
+           target="_blank">
             {{ t }}
         </a>
     {% endfor %}
