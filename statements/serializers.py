@@ -1,9 +1,9 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
 from . import models
 
 
-class PersonSerializer(ModelSerializer):
+class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Person
         fields = (
@@ -15,7 +15,7 @@ class PersonSerializer(ModelSerializer):
         )
 
 
-class TopicSerializer(ModelSerializer):
+class TopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Topic
         fields = (
@@ -25,15 +25,27 @@ class TopicSerializer(ModelSerializer):
         )
 
 
-class StatementSerializer(ModelSerializer):
+class StatementTypeSerializer(serializers.Serializer):
+    def to_representation(self, instance: int):
+        t = models.Statement.StatementType(instance)
+        return {
+            "id": t,
+            "key": t.name,
+            "text": t.label,
+        }
+
+
+class StatementSerializer(serializers.ModelSerializer):
     person = PersonSerializer()
     topics = TopicSerializer(many=True)
+    type = StatementTypeSerializer(read_only=True)
 
     class Meta:
         model = models.Statement
         fields = (
             "id",
             "person",
+            "type",
             "content",
             "reviewed_by",
             "review",

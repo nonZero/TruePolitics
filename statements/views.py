@@ -78,5 +78,8 @@ class StatementExportView(BaseMixin, View):
             ).data,
             "people": serializers.PersonSerializer(self.people(), many=True).data,
             "topics": serializers.TopicSerializer(self.topics(), many=True).data,
+            "types": serializers.StatementTypeSerializer(
+                models.Statement.StatementType, many=True
+            ).data,
         }
         return JsonResponse(d, json_dumps_params={"ensure_ascii": False})
