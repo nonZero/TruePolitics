@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
@@ -8,6 +9,12 @@ from . import models, serializers
 
 
 class BaseMixin:
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(
+            google_site_verification=settings.GOOGLE_SITE_VERIFICATION,
+            **kwargs,
+        )
+
     def total(self):
         return models.Statement.objects.reviewed().count()
 

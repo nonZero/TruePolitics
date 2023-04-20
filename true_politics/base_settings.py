@@ -187,3 +187,5 @@ ADMINS = (("Udi", "udioron@gmail.com"),)
 MANAGERS = ADMINS
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+GOOGLE_SITE_VERIFICATION = os.environ.get("GOOGLE_SITE_VERIFICATION")
